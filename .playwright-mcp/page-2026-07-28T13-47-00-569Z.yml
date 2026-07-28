@@ -1,0 +1,32 @@
+- generic [ref=f1e3]:
+  - link "Skip to main content" [ref=f1e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f1e5]:
+    - link "Zyra Labs — home" [ref=f1e6] [cursor=pointer]:
+      - /url: /
+      - generic [ref=f1e7]:
+        - generic [ref=f1e8]: Z
+        - generic [ref=f1e9]: "y"
+        - generic [ref=f1e10]: R
+        - generic [ref=f1e11]: A
+        - generic [ref=f1e12]: labs
+    - navigation [ref=f1e13]:
+      - link "Home" [ref=f1e14] [cursor=pointer]:
+        - /url: "#home"
+      - link "About" [ref=f1e15] [cursor=pointer]:
+        - /url: /about
+      - link "Shop" [ref=f1e16] [cursor=pointer]:
+        - /url: /services
+      - link "Why Us" [ref=f1e17] [cursor=pointer]:
+        - /url: "#why-us"
+      - link "Testimonial" [ref=f1e18] [cursor=pointer]:
+        - /url: "#testimonials"
+      - link "Contact" [ref=f1e19] [cursor=pointer]:
+        - /url: /contact
+    - generic [ref=f1e20]:
+      - link "Sign in" [ref=f1e21] [cursor=pointer]:
+        - /url: /signin
+      - link "Cart, 0 items" [ref=f1e25] [cursor=pointer]:
+        - /url: /cart
+  - main [ref=f1e29]:
+    - status "Loading" [ref=f1e30]

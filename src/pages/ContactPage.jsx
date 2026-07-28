@@ -28,17 +28,6 @@ const ChannelIcon = ({ name }) => {
   switch (name) {
     case 'email':
       return <svg {...P}><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
-    case 'whatsapp':
-      return (
-        <svg {...P}>
-          <path d="M4 20l1.4-4.2A8 8 0 1 1 8 19.6z" />
-          <path d="M9 10.5c0 3 2 5 5 5" strokeWidth="1.2" />
-        </svg>
-      )
-    case 'phone':
-      return <svg {...P}><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg>
-    case 'pin':
-      return <svg {...P}><path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12z" /><circle cx="12" cy="10" r="2.5" /></svg>
     case 'clock':
       return <svg {...P}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
     default: return null
@@ -56,7 +45,7 @@ const ContactHero = () => {
       <div className="zl-banner__labels">
         <span>RESEARCH & COAs</span>
         <span>CUSTOM SYNTHESIS</span>
-        <span>WHATSAPP · LIVE</span>
+        <span>EMAIL SUPPORT</span>
         <span>REPLY IN 1H</span>
       </div>
 
@@ -98,21 +87,6 @@ const channels = [
     value: 'sales@zyralabs.com',
     href: 'mailto:sales@zyralabs.com',
     hint: 'Bulk pricing, tiered accounts, retainers.',
-  },
-  {
-    icon: 'whatsapp',
-    label: 'whatsapp · live',
-    value: '+971 54 380 0625',
-    href: 'https://wa.me/971543800625',
-    hint: 'Fastest — replies within the hour.',
-    external: true,
-  },
-  {
-    icon: 'phone',
-    label: 'front desk',
-    value: '+971 4 000 0000',
-    href: 'tel:+97140000000',
-    hint: 'Sun – Fri · 09:00 – 21:00 GST.',
   },
 ]
 
@@ -240,9 +214,9 @@ const ContactForm = () => {
 const Visit = () => (
   <section className="zl-visit">
     <div className="zl-visit__head" data-reveal>
-      <div className="zl-eyebrow">( 03 ) visit</div>
-      <h2>Come by the <em>bench</em>.</h2>
-      <p>Verified research clients are welcome to see the process first-hand. Book a slot in advance and we&apos;ll clear a chemist to walk you through synthesis and QA.</p>
+      <div className="zl-eyebrow">( 03 ) response</div>
+      <h2>What to <em>expect</em>.</h2>
+      <p>Every enquiry reaches a real chemist — no ticket queue, no chatbot replies.</p>
     </div>
 
     <div className="zl-visit__grid">
@@ -250,21 +224,10 @@ const Visit = () => (
         <div className="zl-visit__info-card">
           <div className="zl-visit__info-icon"><ChannelIcon name="clock" /></div>
           <div>
-            <h4>Hours</h4>
+            <h4>Response time</h4>
             <p>
-              <strong>Sun – Fri</strong> · 09:00 – 21:00 GST<br />
-              <strong>Saturday</strong> · Closed<br />
-              WhatsApp replies 7 days
-            </p>
-          </div>
-        </div>
-        <div className="zl-visit__info-card">
-          <div className="zl-visit__info-icon"><ChannelIcon name="whatsapp" /></div>
-          <div>
-            <h4>Fast lane</h4>
-            <p>
-              WhatsApp <a href="https://wa.me/971543800625" target="_blank" rel="noopener noreferrer">+971 54 380 0625</a><br />
-              typical reply: under 60 minutes.
+              We reply to every enquiry within one business day.<br />
+              Verified research clients can request a direct line to a chemist.
             </p>
           </div>
         </div>
@@ -338,7 +301,7 @@ function ContactPage() {
       <Seo
         title="Contact"
         path="/contact"
-        description="Get in touch with Zyra Labs — request a certificate of analysis, ask about batch testing, or reach our team in Dubai Science Park by email or WhatsApp."
+        description="Get in touch with Zyra Labs — request a certificate of analysis, ask about batch testing, or reach our research and sales teams by email."
       />
       <ContactHero />
       <Channels />

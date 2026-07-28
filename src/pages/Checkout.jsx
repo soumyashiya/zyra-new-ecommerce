@@ -14,7 +14,6 @@ const COUNTRIES = [
   'Germany',
   'Netherlands',
   'Spain',
-  'United Arab Emirates',
   'United States',
   'Other',
 ]
@@ -323,7 +322,9 @@ function Checkout() {
             </section>
 
             <p className="zl-note">
-              For laboratory R&amp;D use only · Not for human or veterinary consumption.
+              These products are supplied strictly for laboratory research purposes — not
+              intended for human or veterinary use, and not intended to diagnose, treat,
+              cure, or prevent any disease.
             </p>
           </div>
 
@@ -397,10 +398,6 @@ function Checkout() {
                 <dt>Subtotal</dt>
                 <dd>{fmt(subtotal)}</dd>
               </div>
-              <div>
-                <dt>Tracked shipping</dt>
-                <dd>Free</dd>
-              </div>
               {discount > 0 && (
                 <div>
                   <dt>Discount</dt>
@@ -425,7 +422,10 @@ function Checkout() {
             </button>
             <Link to="/cart" className="zl-summary__continue">Back to cart</Link>
             <p className="zl-summary__note">
-              For laboratory R&amp;D use only · Not for human or veterinary consumption
+              By placing this order, you acknowledge that these products are intended
+              solely for laboratory research purposes and are not intended for human or
+              veterinary use, and are not intended to diagnose, treat, cure, or prevent
+              any disease.
             </p>
           </aside>
         </form>
@@ -469,7 +469,10 @@ function Checkout() {
             >
               Continue shopping
             </button>
-            <p className="zl-modal__note">For laboratory R&amp;D use only</p>
+            <p className="zl-modal__note">
+              For laboratory research use only. Not intended for human or veterinary use,
+              or to diagnose, treat, cure, or prevent any disease.
+            </p>
           </div>
         </div>
       )}

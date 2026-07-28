@@ -70,11 +70,11 @@ const Mission = () => (
           <em>engineered</em> for reproducibility.
         </h2>
         <p data-reveal>
-          We exist to remove uncertainty from bench-side research. Every injection
+          We exist to remove uncertainty from bench-side research. Every unit
           leaving our lab is synthesized under strict standard operating
           procedures, independently assayed for identity and purity, and
-          cold-chain packaged for a worldwide research community that
-          cannot afford lot-to-lot drift.
+          fully documented for a research community that cannot afford
+          lot-to-lot drift.
         </p>
         <div className="zl-mission__points" data-reveal>
           <div className="zl-mission__point">
@@ -88,14 +88,14 @@ const Mission = () => (
             <span className="zl-mission__point-num">02</span>
             <div>
               <h4>Transparent documentation</h4>
-              <p>Every shipment is backed by an HPLC-verified certificate of analysis, signed by the batch chemist.</p>
+              <p>Every batch is backed by an HPLC-verified certificate of analysis, signed by the batch chemist.</p>
             </div>
           </div>
           <div className="zl-mission__point">
             <span className="zl-mission__point-num">03</span>
             <div>
               <h4>Human support</h4>
-              <p>Talk to the person who ran the assay — not a call centre. WhatsApp replies within the hour.</p>
+              <p>Talk to the person who ran the assay — not a call centre. Email replies within the hour.</p>
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ const Mission = () => (
         </div>
         <div className="zl-mission__badge">
           <span className="zl-mission__badge-num">100%</span>
-          <span className="zl-mission__badge-label">batch-tested before dispatch</span>
+          <span className="zl-mission__badge-label">batch-tested before release</span>
         </div>
       </div>
     </div>
@@ -118,7 +118,7 @@ const Story = () => {
   const timeline = [
     { year: '2019', title: 'Zyra Labs founded', body: 'Two chemists open a single-bench research chemistry lab.' },
     { year: '2021', title: 'HPLC in-house', body: 'Independent HPLC and mass-spec instrumentation installed. Full assay control moves under one roof.' },
-    { year: '2023', title: '10,000+ researchers', body: 'The 10,000th verified research client places an order. Cold-chain shipping expands to 40+ countries.' },
+    { year: '2023', title: '10,000+ researchers', body: 'The 10,000th verified research client places an order — a milestone for the lab.' },
     { year: '2025', title: 'Peptide facility', body: 'Dedicated peptide synthesis wing goes live, doubling capacity for BPC-157, TB-500, and GLP-1 analogs.' },
     { year: '2026', title: 'Custom synthesis', body: 'Custom research synthesis service opens to labs, universities, and independent researchers globally.' },
   ]
@@ -153,7 +153,7 @@ const Values = () => {
   const values = [
     { img: valueImg1, kicker: 'purity', title: 'Verified ≥99% purity', body: 'HPLC and mass-spec confirmation on every lot. No exceptions, no averaging across batches.' },
     { img: valueImg2, kicker: 'consistency', title: 'Batch-to-batch consistency', body: 'Standard operating procedures locked at every step of synthesis, lyophilization, and fill.' },
-    { img: valueImg3, kicker: 'documentation', title: 'Full documentation', body: 'A signed CoA, HPLC trace, and endotoxin result travels with every injection that leaves the lab.' },
+    { img: valueImg3, kicker: 'documentation', title: 'Full documentation', body: 'A signed CoA, HPLC trace, and endotoxin result travels with every unit that leaves the lab.' },
   ]
   return (
     <section className="zl-values">
@@ -191,7 +191,7 @@ const Team = () => {
       <div className="zl-team__head">
         <div className="zl-team__label" data-reveal>( 04 ) team</div>
         <h2 data-reveal>The chemists <em>signing</em> your CoA.</h2>
-        <p data-reveal>A tight, senior team of research chemists and analysts. Every injection ships with the name of the person who verified its purity.</p>
+        <p data-reveal>A tight, senior team of research chemists and analysts. Every unit ships with the name of the person who verified its purity.</p>
       </div>
       <div className="zl-team__grid">
         {team.map((m, i) => (
@@ -293,7 +293,7 @@ function About() {
       <Seo
         title="About"
         path="/about"
-        description="Meet Zyra Labs — the team, mission, and quality standards behind our research-grade peptides. Every batch is third-party tested for purity and shipped cold-chain from Dubai Science Park."
+        description="Meet Zyra Labs — the team, mission, and quality standards behind our research-grade peptides. Every batch is third-party tested for purity and fully documented."
       />
       <AboutHero />
       <Mission />

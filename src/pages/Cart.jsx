@@ -99,10 +99,6 @@ function Cart() {
                   <dt>Subtotal</dt>
                   <dd>{fmt(subtotal)}</dd>
                 </div>
-                <div>
-                  <dt>Tracked shipping</dt>
-                  <dd>Free</dd>
-                </div>
                 <div className="zl-summary__divider" aria-hidden="true" />
                 <div className="zl-summary__total">
                   <dt>Total</dt>
@@ -114,7 +110,10 @@ function Cart() {
               </button>
               <Link to="/services" className="zl-summary__continue">Continue shopping</Link>
               <p className="zl-summary__note">
-                For laboratory R&amp;D use only · Not for human or veterinary consumption
+                By proceeding with this purchase, you acknowledge that these products are
+                intended solely for laboratory research purposes and are not intended for
+                human or veterinary use. These products are not intended to diagnose, treat,
+                cure, or prevent any disease.
               </p>
             </aside>
           </div>

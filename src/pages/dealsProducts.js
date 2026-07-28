@@ -34,19 +34,22 @@ import nadPen from '../assets/images/alluvi/nad-nadpen.jpg'
 import nadOpen from '../assets/images/alluvi/nad-nadopen.jpg'
 import nadUv from '../assets/images/alluvi/nad-uvnad.jpg'
 
+const STORAGE_LOGIC =
+  'Store refrigerated (2–8°C). Do not freeze. Supplied in fixed-volume sealed format for laboratory analysis.'
+
 export const products = [
   {
     id: 'bpc-157-tb-500',
     title: 'BPC-157 & TB-500 40mg',
-    subtitle: 'Recovery & Repair Blend',
+    subtitle: 'BPC-157 / TB-500 Research Blend',
     price: '$129.00',
     image: bpcFront,
     gallery: [bpcFront, bpcPen, bpcOpen, bpcUv],
     description:
-      'A precision-blended research peptide combining BPC-157 and TB-500 in a single injection. Used in studies on tissue repair, vascularization, and inflammatory pathways.',
+      'A 40mg BPC-157 & TB-500 formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Delivered in sealed format to support compound stability analysis, formulation studies, and delivery mechanism evaluation.',
     highlights: [
-      '40mg total active peptide content per injection',
-      'Lyophilized for stability — reconstitute with bacteriostatic water',
+      '40mg total active peptide content per unit',
+      'Lyophilized for stability during transport and storage',
       'Independently verified ≥99% purity',
       'CoA and HPLC report available on request',
     ],
@@ -56,6 +59,22 @@ export const products = [
       Form: 'Lyophilized powder',
       Storage: '2–8°C, dry, dark',
     },
+    janoshik: {
+      reportUrl:
+        'https://verify.janoshik.com/tests/163218-ALLUVI_BPC157_TB500_40MG_KIT_EAI125ZEF8TB',
+      batchNumber: 'BP1701FSR',
+      fillVolume: '3 mL',
+      rows: [
+        { compound: 'BPC-157', concentration: '7.33 mg/mL', verifiedContent: '21.99 mg' },
+        { compound: 'TB-500', concentration: '6.53 mg/mL', verifiedContent: '19.59 mg' },
+      ],
+      note: 'Concentration is measured per ml; verified content reflects the total assayed mass across the stated fill volume.',
+    },
+    packageContents: [
+      'Pre-filled research pen (20mg BPC-157, 20mg TB-500)',
+      'Research information sheet',
+    ],
+    storageLogic: STORAGE_LOGIC,
   },
   {
     id: 'tirzepatide',
@@ -65,19 +84,35 @@ export const products = [
     image: tirzFront,
     gallery: [tirzFront, tirzCopy, tirzOpen, tirzUv],
     description:
-      'Research-grade Tirzepatide supplied at 40mg for flexible study design across metabolic and weight-related research protocols.',
+      'A 40mg Tirzepatide formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Delivered in sealed format to support compound stability analysis, formulation studies, and delivery mechanism evaluation.',
     highlights: [
-      '40mg injection, lyophilized for stability',
-      'Sealed cold-chain delivery within 24 hours',
+      '40mg research unit, lyophilized for stability',
+      'Sealed, tamper-evident packaging',
       'Batch-tested for endotoxin levels',
       'Documentation included with every order',
     ],
     specs: {
-      'Injection': '40mg',
+      'Net content': '40mg',
       Purity: '≥99%',
       Form: 'Lyophilized powder',
       Storage: '−20°C long term · 2–8°C short term',
     },
+    janoshik: {
+      reportUrl:
+        'https://verify.janoshik.com/tests/147174-ALLUVI_TIRZEPATIDE_40MG_KIT_T5MBWRAYD4HN',
+      batchNumber: 'TR786PAOS',
+      fillVolume: '3 mL',
+      purity: '99.85%',
+      rows: [
+        { compound: 'Tirzepatide', concentration: '13.35 mg/mL', verifiedContent: '40.05 mg' },
+      ],
+      note: 'Concentration is measured per ml; verified content reflects the total assayed mass across the stated fill volume.',
+    },
+    packageContents: [
+      'Pre-filled research pen (40mg Tirzepatide)',
+      'Research information sheet',
+    ],
+    storageLogic: STORAGE_LOGIC,
   },
   {
     id: 'retatrutide-20',
@@ -87,19 +122,35 @@ export const products = [
     image: reta20Front,
     gallery: [reta20Front, reta20A, reta20B, reta20Uv],
     description:
-      'Retatrutide 20mg injection for research into GLP-1, GIP, and glucagon-receptor pathways. Each injection is sealed, documented, and ships in protective packaging.',
+      'A 20mg Retatrutide formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Delivered in sealed format to support compound stability analysis, formulation studies, and delivery mechanism evaluation.',
     highlights: [
-      '20mg injection',
+      '20mg research unit',
       '≥99% purity verified by HPLC',
-      'Cold-pack shipping within 24 hours of order',
-      'Direct WhatsApp support for protocol questions',
+      'Sealed, tamper-evident packaging',
+      'Direct support for documentation questions',
     ],
     specs: {
-      'Injection': '20mg',
+      'Net content': '20mg',
       Purity: '≥99%',
       Form: 'Lyophilized powder',
       Storage: '−20°C long term',
     },
+    janoshik: {
+      reportUrl:
+        'https://verify.janoshik.com/tests/163215-ALLUVI_RETATRUTIDE_20MG_KIT_GBHEFN58JXXZ',
+      batchNumber: 'AR1721TRT',
+      fillVolume: '2.4 mL',
+      purity: '99.21%',
+      rows: [
+        { compound: 'Retatrutide', concentration: '9.57 mg/mL', verifiedContent: '22.96 mg' },
+      ],
+      note: 'Concentration is measured per ml; verified content reflects the total assayed mass across the stated fill volume.',
+    },
+    packageContents: [
+      'Pre-filled research pen (20mg Retatrutide)',
+      'Research information sheet',
+    ],
+    storageLogic: STORAGE_LOGIC,
   },
   {
     id: 'retatrutide-40',
@@ -109,63 +160,100 @@ export const products = [
     image: retaFront,
     gallery: [retaFront, retaPen, retaOpen, retaUv],
     description:
-      'Retatrutide 40mg injection for research into GLP-1, GIP, and glucagon-receptor pathways. Each injection is sealed, documented, and ships in protective packaging.',
+      'A 40mg Retatrutide formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Delivered in sealed format to support compound stability analysis, formulation studies, and delivery mechanism evaluation.',
     highlights: [
-      '40mg injection',
+      '40mg research unit',
       '≥99% purity verified by HPLC',
-      'Cold-pack shipping within 24 hours of order',
-      'Direct WhatsApp support for protocol questions',
+      'Sealed, tamper-evident packaging',
+      'Direct support for documentation questions',
     ],
     specs: {
-      'Injection': '40mg',
+      'Net content': '40mg',
       Purity: '≥99%',
       Form: 'Lyophilized powder',
       Storage: '−20°C long term',
     },
+    janoshik: {
+      reportUrl:
+        'https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ',
+      batchNumber: 'AR1739JAT',
+      fillVolume: '2.4 mL',
+      purity: '99.269%',
+      rows: [
+        { compound: 'Retatrutide', concentration: '18.22 mg/mL', verifiedContent: '43.72 mg' },
+      ],
+      note: 'Concentration is measured per ml; verified content reflects the total assayed mass across the stated fill volume.',
+    },
+    packageContents: [
+      'Pre-filled research pen (40mg Retatrutide)',
+      'Research information sheet',
+    ],
+    storageLogic: STORAGE_LOGIC,
   },
   {
     id: 'glow',
     title: 'Glow 70mg',
-    subtitle: 'Skin & Pigment Research Blend',
+    subtitle: 'GHK-Cu / BPC-157 / TB-500 Research Blend',
     price: '$89.00',
     image: glowFront,
     gallery: [glowFront, glowPen, glowOpen, glowUv],
     description:
-      'Glow is a research-grade peptide blend used in skin, pigment, and dermal hydration studies. Supplied at 70mg for consistent dosing.',
+      'A 70mg Glow formulation supplied in a pre-filled research device, provided exclusively for controlled laboratory R&D applications. Delivered in sealed format to support compound stability analysis, formulation studies, and delivery mechanism evaluation.',
     highlights: [
-      '70mg injection',
+      '70mg research unit',
       'High purity, batch verified',
       'Stable lyophilized form',
       'Tamper-evident sealed packaging',
     ],
     specs: {
-      'Injection': '70mg',
+      'Net content': '70mg',
       Purity: '≥99%',
       Form: 'Lyophilized powder',
       Storage: '2–8°C',
     },
+    janoshik: {
+      reportUrl: 'https://verify.janoshik.com/tests/163217-ALLUVI_GLOW_70MG_KIT_DCL3AJSE4JQP',
+      batchNumber: 'GL0621XSA',
+      fillVolume: '3.4 mL',
+      rows: [
+        { compound: 'GHK-Cu', concentration: '7.59 mg/mL', verifiedContent: '25.8 mg' },
+        { compound: 'BPC-157', concentration: '2.39 mg/mL', verifiedContent: '8.13 mg' },
+        { compound: 'TB-500', concentration: '1.99 mg/mL', verifiedContent: '6.76 mg' },
+      ],
+      note: 'Concentration is measured per ml; verified content reflects the total assayed mass across the stated fill volume.',
+    },
+    packageContents: [
+      '2 × pre-filled research pens (each pen contains 5mg BPC-157, 5mg TB-500, 25mg GHK-Cu)',
+      'Total contents: 10mg BPC-157, 10mg TB-500, 50mg GHK-Cu',
+    ],
+    storageLogic: STORAGE_LOGIC,
   },
   {
     id: 'nad-plus-1000',
     title: 'NAD+ 1,000mg',
-    subtitle: 'Cellular Energy & Longevity Research',
+    subtitle: 'Nicotinamide Adenine Dinucleotide Research Compound',
     price: '$139.00',
     image: nadFront,
     gallery: [nadFront, nadPen, nadOpen, nadUv],
     description:
-      'NAD+ 1,000mg for research into cellular energy metabolism, mitochondrial function, and longevity pathways. High-purity lyophilized powder supplied in a sealed injection.',
+      'NAD+ (Nicotinamide Adenine Dinucleotide) research formulation for laboratory analysis and in vitro studies only. Provided exclusively for controlled laboratory R&D applications.',
     highlights: [
-      '1,000mg injection',
+      '1,000mg research unit',
       '≥99% purity verified by HPLC',
-      'Lyophilized for stability — reconstitute with bacteriostatic water',
+      'Lyophilized for stability during transport and storage',
       'CoA available on request',
     ],
     specs: {
-      'Injection': '1,000mg',
+      'Net content': '1,000mg',
       Purity: '≥99%',
       Form: 'Lyophilized powder',
       Storage: '−20°C long term · 2–8°C short term',
     },
+    packageContents: [
+      '2 × pre-filled NAD+ pens (500mg each)',
+      'Research information sheet',
+    ],
+    storageLogic: STORAGE_LOGIC,
   },
 ]
 

@@ -14,7 +14,7 @@ import { useEffect } from 'react'
    every route's tags visible without JS. */
 
 const SITE = 'https://zyralabs.com'
-const DEFAULT_TITLE = 'Zyra Labs — Research-Grade Peptides & Clinical Supplements'
+const DEFAULT_TITLE = 'Zyra Labs — Research-Grade Peptides & Laboratory Compounds'
 const DEFAULT_IMAGE = `${SITE}/og-image.jpg`
 
 function upsertMeta(attr, key, content) {

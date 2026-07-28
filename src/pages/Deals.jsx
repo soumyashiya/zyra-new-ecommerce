@@ -152,7 +152,7 @@ const Hero = () => (
 
     <div className="vy-hero__labels">
       <span>RESEARCH PEPTIDES</span>
-      <span>SUPPLEMENTS</span>
+      <span>LABORATORY COMPOUNDS</span>
       <span>VERIFIED PURITY</span>
     </div>
 
@@ -207,10 +207,10 @@ const About = () => (
   <section className="vy-about" id="about" data-screen-label="About">
     <div className="vy-about__body">
       <p className="vy-about__copy" data-reveal>
-        Zyra Labs is committed to advancing high-quality peptide and supplement
-        research through clean, reliable, and precisely developed
-        formulations. Our goal is simple — to provide controlled, consistent,
-        and easy-to-use products designed for structured research applications.
+        Zyra Labs is committed to advancing high-quality peptide and research
+        compound production through clean, reliable, and precisely developed
+        formulations. Our goal is simple to provide controlled, consistent
+        research materials engineered for structured laboratory applications.
       </p>
 
       <div className="vy-about__stats">
@@ -224,7 +224,7 @@ const About = () => (
         </div>
         <div className="vy-stat" data-reveal style={{ '--reveal-delay': '240ms' }}>
           <div className="vy-stat__num"><strong>24</strong><span>/7</span></div>
-          <div className="vy-stat__label">whatsapp support</div>
+          <div className="vy-stat__label">email support</div>
         </div>
       </div>
     </div>
@@ -261,15 +261,15 @@ const Testimonials = () => {
   const items = [
     {
       name: 'Emily Carter',
-      role: 'Wellness Consultant',
+      role: 'Procurement Lead · Research Lab',
       tint: 'tone-a',
       img: tEmily,
       quote:
-        'Fast support and remarkably consistent products. Zyra Labs has become my go-to source for research-grade peptides.',
+        'Fast support and remarkably consistent products. Zyra Labs has become our go-to source for research-grade peptides.',
     },
     {
       name: 'Sofia Bennett',
-      role: 'Fitness Coordinator · Abu Dhabi',
+      role: 'Lab Coordinator',
       tint: 'tone-b',
       img: tSofia,
       quote:
@@ -285,11 +285,11 @@ const Testimonials = () => {
     },
     {
       name: 'Aisha Khan',
-      role: 'Naturopath · Riyadh',
+      role: 'Analytical Chemist',
       tint: 'tone-a',
       img: tAisha,
       quote:
-        'Documentation and traceability are flawless. I trust their batches the way I trust my own bench notes — completely.',
+        'Documentation and traceability are flawless. I trust their batches the way I trust my own bench notes completely.',
     },
     {
       name: 'James Whitford',
@@ -301,11 +301,11 @@ const Testimonials = () => {
     },
     {
       name: 'Omar Hassan',
-      role: 'Sports Physiotherapist · Doha',
+      role: 'QC Analyst',
       tint: 'tone-c',
       img: tOmar,
       quote:
-        'Shipping is quick, packaging is intact every single time, and the WhatsApp line actually replies in minutes. Genuinely rare.',
+        'Packaging is intact every single time, and support actually replies in minutes. Genuinely rare.',
     },
   ]
 
@@ -420,7 +420,7 @@ const Testimonials = () => {
         </div>
         <div className="vy-testimonials__metric">
           <strong>24h</strong>
-          <span>typical WhatsApp response time</span>
+          <span>typical email response time</span>
         </div>
       </div>
     </section>
@@ -528,7 +528,7 @@ const WhyUs = () => {
     {
       id: 'consistency',
       title: 'Reliable Consistency',
-      desc: 'Uniform production standards ensure every batch performs the same — exactly what structured research demands.',
+      desc: 'Uniform production standards ensure every batch performs the same  exactly what structured research demands.',
       img: whyImg2,
     },
     {
@@ -545,14 +545,14 @@ const WhyUs = () => {
     },
     {
       id: 'support',
-      title: 'Quick WhatsApp Support',
+      title: 'Quick Email Support',
       desc: 'Fast, direct assistance whenever you need it. Real people, real answers, with no waiting on hold.',
       img: whyImg5,
     },
     {
       id: 'trusted',
       title: 'Trusted by Thousands',
-      desc: 'Researchers and wellness professionals worldwide choose Zyra Labs for clean formulations and consistent results.',
+      desc: 'Researchers and laboratories worldwide choose Zyra Labs for clean formulations and dependable batch quality.',
       img: whyImg6,
     },
   ]
@@ -560,7 +560,7 @@ const WhyUs = () => {
     <section className="vy-portfolio vy-whyus" id="why-us" data-screen-label="Why Us">
       <div className="vy-portfolio__intro" data-reveal>
         <p>
-          Why Zyra Labs — the standards behind every product we ship. Clean
+          Why Zyra Labs the standards behind every product we ship. Clean
           formulations, secure packaging, and a support team that knows what
           consistency means for serious research work.
         </p>
@@ -596,7 +596,7 @@ const Contact = () => (
       <p className="vy-cta__lead" data-reveal>
         Need a certificate of analysis, a custom synthesis quote, or pricing
         on a bulk research order? Write to the lab and you&rsquo;ll usually
-        hear back within the hour — signed off by the chemist who ran the
+        hear back within the hour signed off by the chemist who ran the
         batch.
       </p>
       <div className="vy-contact" data-reveal>
@@ -608,19 +608,7 @@ const Contact = () => (
           <span className="vy-contact__label">sales &amp; wholesale</span>
           <span className="vy-contact__value">sales@zyralabs.com</span>
         </a>
-        <a
-          className="vy-contact__row"
-          href="https://wa.me/971543800625"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="vy-contact__label">whatsapp · live</span>
-          <span className="vy-contact__value">+971 54 380 0625</span>
-        </a>
       </div>
-      <p className="vy-cta__hours" data-reveal>
-        Lab 05 · Sun – Fri · 09:00 – 21:00 GST · cold-chain shipping worldwide in 2 – 4 business days
-      </p>
     </div>
   </section>
 )
@@ -850,7 +838,7 @@ function Deals() {
     <div className="vyral-page" ref={rootRef} data-screen-label="01 Marketing Site">
       <Seo
         path="/"
-        description="Research-grade peptides and clinical-grade supplements — third-party batch-tested for purity, CoA-documented, and dispatched cold-chain from Dubai Science Park. Explore BPC-157, tirzepatide, retatrutide and more."
+        description="Research-grade peptides and laboratory research compounds third-party batch-tested for purity and CoA-documented. For laboratory research use only. Explore BPC-157, tirzepatide, retatrutide and more."
       />
       <Hero />
       <Marquee />

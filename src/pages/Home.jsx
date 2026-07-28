@@ -56,7 +56,7 @@ const HERO_SLIDES = [
 const TESTIMONIALS = [
   {
     type: 'quote',
-    text: 'Pulse is the first thing I open each morning. One clean feed, everything I care about — no clutter, no noise.',
+    text: 'Pulse is the first thing I open each morning. One clean feed, everything I care about  no clutter, no noise.',
     name: 'Amara K.',
   },
   {
@@ -459,7 +459,7 @@ function HomeFooter() {
             <span className="hfooter__name">Pulse</span>
           </div>
           <p className="hfooter__tagline">
-            Your daily feed of stories, ideas, and moments — across every
+            Your daily feed of stories, ideas, and moments  across every
             category of modern life.
           </p>
         </div>

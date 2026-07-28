@@ -35,6 +35,10 @@
   letter-spacing: -0.035em;
   color: var(--cream);
 }
+/* The process band is dark, so the default dark-ink <em> accent ("enquiry")
+   would render invisible. Inherit the light heading colour so it stays legible
+   on the dark background. */
+.zl-process__head h2 em { color: inherit; }
 .zl-process__grid {
   max-width: 1240px;
   margin: 0 auto;

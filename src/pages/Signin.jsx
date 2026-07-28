@@ -73,12 +73,12 @@ function Signin() {
           <div className="zl-auth__hero" aria-hidden="true">
             <span className="zl-auth__brand">ZYRA labs · researcher access</span>
             <p className="zl-auth__quote">
-              Pharmaceutical <em>rigor,</em><br />
-              in every injection.
+              Laboratory <em>rigor,</em><br />
+              in every batch.
             </p>
             <div className="zl-auth__hero-foot">
               <span><strong>HPLC-verified</strong> · every batch, every lot.</span>
-              <span><strong>Cold-chain shipping</strong> · 24-hour dispatch.</span>
+              <span><strong>Endotoxin-tested</strong> · every batch.</span>
               <span><strong>Signed CoA</strong> · with every order.</span>
             </div>
           </div>

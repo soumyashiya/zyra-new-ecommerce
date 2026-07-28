@@ -28,8 +28,8 @@ const ServicesHero = () => {
       <div className="zl-banner__labels">
         <span>STOCK PEPTIDES</span>
         <span>CUSTOM SYNTHESIS</span>
-        <span>COLD-CHAIN</span>
-        <span>GLOBAL SHIPPING</span>
+        <span>BATCH TESTED</span>
+        <span>COA INCLUDED</span>
       </div>
 
       <h1 className="zl-banner__title" aria-label="Our services">
@@ -58,10 +58,10 @@ const ServicesHero = () => {
 /* ---------- Process ---------- */
 const Process = () => {
   const steps = [
-    { n: '01', t: 'Enquire', d: 'Send a quick note over WhatsApp or the form. Tell us what you need, quantity, and any spec.' },
+    { n: '01', t: 'Enquire', d: 'Send a quick note through the contact form. Tell us what you need, quantity, and any spec.' },
     { n: '02', t: 'Verify', d: 'We confirm scope, timelines, and share a quote. For custom work you get a spec sheet to sign off.' },
     { n: '03', t: 'Synthesize', d: 'The batch is synthesized under SOP, HPLC-verified, and lyophilized in a class-100 fill room.' },
-    { n: '04', t: 'Ship', d: 'Signed CoA travels with the injection. Cold-chain dispatch within 24h, live-tracked to your door.' },
+    { n: '04', t: 'Document', d: 'A signed CoA and full batch documentation are provided with every order.' },
   ]
   return (
     <section className="zl-process">
@@ -72,7 +72,6 @@ const Process = () => {
       <div className="zl-process__grid">
         <div className="zl-process__media" data-reveal>
           <img src={processImg} alt="Zyra Labs workflow" loading="lazy" />
-          <div className="zl-process__media-tag">Turnaround<strong>3 – 21 days</strong></div>
         </div>
         <ol className="zl-process__steps">
           {steps.map((s, i) => (
@@ -95,8 +94,8 @@ const Catalogue = () => (
   <section className="zl-catalog">
     <div className="zl-catalog__head" data-reveal>
       <div className="zl-eyebrow">( 01 ) catalogue</div>
-      <h2>Stock <em>peptides</em> — ready to ship.</h2>
-      <p>A snapshot of what&apos;s on the shelf right now. Every listing includes CoA on request and ships within 24h.</p>
+      <h2>Stock <em>peptides</em> ready for research.</h2>
+      <p>A snapshot of what&apos;s on the shelf right now. Every listing includes a CoA on request.</p>
     </div>
 
     <div className="zl-catalog__grid">
@@ -137,11 +136,10 @@ const Catalogue = () => (
 
 /* ---------- FAQ ---------- */
 const faqs = [
-  { q: 'Do you provide a Certificate of Analysis?', a: 'Yes — every injection ships with a signed CoA including HPLC trace, mass-spec identity confirmation, and endotoxin results. Additional reports available on request.' },
+  { q: 'Do you provide a Certificate of Analysis?', a: 'Yes — every unit is accompanied by a signed CoA including HPLC trace, mass-spec identity confirmation, and endotoxin results. Additional reports available on request.' },
   { q: 'How long does custom synthesis take?', a: 'Typical turnaround is 3 – 6 weeks depending on sequence length, modifications, and scale. We share a firm timeline with your quote before you commit.' },
-  { q: 'What countries do you ship to?', a: 'We currently ship to 42 countries under a validated 96-hour cold-chain envelope. Customs paperwork is pre-cleared where applicable.' },
-  { q: 'Is there a minimum order?', a: 'No minimum on stock peptides — single injections are available. Custom synthesis starts at 5mg. Wholesale pricing unlocks at 10 injections per SKU.' },
-  { q: 'Can I speak to a chemist directly?', a: 'Yes. Verified research clients get direct WhatsApp access to a bench chemist for handling, reconstitution, and study-design questions.' },
+  { q: 'Is there a minimum order?', a: 'No minimum on stock peptides — single units are available. Custom synthesis starts at 5mg. Wholesale pricing unlocks at 10 units per SKU.' },
+  { q: 'Can I speak to a chemist directly?', a: 'Yes. Verified research clients get direct access to a bench chemist for specification, documentation, and study-design questions.' },
 ]
 
 const FAQ = () => {
@@ -262,7 +260,7 @@ function ServicesPage() {
       <Seo
         title="Shop Research Peptides"
         path="/services"
-        description="Browse Zyra Labs' catalogue of research-grade peptides and clinical supplements — BPC-157, tirzepatide, retatrutide and more. Each product ships with a certificate of analysis and full batch documentation."
+        description="Browse Zyra Labs' catalogue of research-grade peptides and laboratory research compounds — BPC-157, tirzepatide, retatrutide and more. Each product includes a certificate of analysis and full batch documentation. For laboratory research use only."
       />
       <ServicesHero />
       <Catalogue />

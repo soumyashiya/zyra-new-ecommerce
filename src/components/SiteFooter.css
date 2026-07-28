@@ -178,6 +178,18 @@
 .zl-footer__news-msg--error { color: #ff9276; }
 .zl-footer__news-msg--sending { color: rgba(244,242,236,0.6); }
 
+/* --- Guard against parent-page paragraph colour leaking in ---
+   The footer renders inside route wrappers such as `.zl-page`, whose
+   `.zl-page p { color:#0E0E0E }` rule outranks the footer's single-class
+   paragraph rules and would darken these <p> elements to near-invisibility on
+   the dark footer. Re-assert the intended light colours with a compound
+   selector so the footer stays legible regardless of the page it sits in. */
+.zl-footer .zl-footer__tag { color: rgba(244, 242, 236, 0.65); }
+.zl-footer .zl-footer__news-lead { color: rgba(244, 242, 236, 0.55); }
+.zl-footer .zl-footer__news-msg--success { color: #7ed3a8; }
+.zl-footer .zl-footer__news-msg--error { color: #ff9276; }
+.zl-footer .zl-footer__news-msg--sending { color: rgba(244, 242, 236, 0.6); }
+
 .zl-footer__col {
   display: flex;
   flex-direction: column;

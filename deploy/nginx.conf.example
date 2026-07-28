@@ -1,0 +1,52 @@
+# Reference nginx server block for zyra (Vite SPA + React Router BrowserRouter).
+#
+# Not auto-applied — this file is documentation only. Copy the relevant
+# `location` blocks into the site's real nginx config on the VPS and reload
+# nginx (`nginx -t && systemctl reload nginx`).
+#
+# Why this file exists: deep routes (e.g. /product/tirzepatide, /cart,
+# /checkout) only resolve client-side via React Router. A hard refresh on
+# one of those paths sends nginx a real request for that exact path, which
+# nginx cannot resolve to a file — it must fall back to index.html so React
+# Router can take over. Without the try_files fallback below, that request
+# either 404s outright or (if a catch-all route exists elsewhere) can
+# intercept unrelated requests, including the hashed CSS/JS chunk requests
+# under /assets/, which shows up as "the page loses its styling" rather
+# than a clean 404.
+
+server {
+    # ... existing listen / server_name / TLS directives ...
+
+    root /var/www/zyra/app/dist;
+    index index.html;
+
+    # 1. Built, content-hashed static assets (JS/CSS/images) — must be
+    #    matched BEFORE the SPA fallback below, and served long-cache since
+    #    the filename itself changes on every rebuild.
+    location /assets/ {
+        try_files $uri =404;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
+    # 2. API requests — proxy to the companion email server (server/index.js)
+    #    or shared backend. Must also be matched before the SPA fallback.
+    location /api/ {
+        proxy_pass http://127.0.0.1:4002;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # 3. Everything else is an SPA route — always serve index.html and let
+    #    React Router resolve the path client-side. This is what fixes
+    #    "hard refresh on /product/:id loses styling / 404s".
+    location / {
+        try_files $uri $uri/ /index.html;
+
+        # index.html itself must never be cached long-term: it references
+        # the current build's hashed asset filenames, and those filenames
+        # change (old ones are deleted) on every deploy. A stale cached
+        # index.html pointing at deleted asset hashes is the other common
+        # trigger for "styling randomly missing after a refresh."
+        add_header Cache-Control "no-cache";
+    }
+}

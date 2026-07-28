@@ -85,7 +85,10 @@ function OrderConfirmation() {
             </button>
             <Link to="/" className="zl-btn-ghost">Back to home</Link>
           </div>
-          <p className="zl-confirm__note">For laboratory R&amp;D use only</p>
+          <p className="zl-confirm__note">
+            For laboratory research use only. Not intended for human or veterinary use,
+            or to diagnose, treat, cure, or prevent any disease.
+          </p>
         </div>
       </div>
       <SiteFooter />

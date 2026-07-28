@@ -141,14 +141,14 @@ function SiteFooter() {
               <span className="zl-footer__brand-sub">labs</span>
             </NavLink>
             <p className="zl-footer__tag">
-              Research-grade peptides and clinical-grade supplements —
-              formulated, tested, and dispatched cold-chain from Dubai Science
-              Park.
+              Research-grade peptides and laboratory research compounds
+              formulated and tested. For laboratory research use only not
+              for human or veterinary consumption.
             </p>
             <div className="zl-footer__news-wrap">
-              <h4 className="zl-footer__news-title">Join the newsletter</h4>
+              <h4 className="zl-footer__news-title"></h4>
               <p className="zl-footer__news-lead">
-                CoAs, batch drops, and lab notes — no more than once a month.
+                CoAs, batch drops, and lab notes no more than once a month.
               </p>
               <NewsletterForm />
             </div>
@@ -179,17 +179,6 @@ function SiteFooter() {
             <ul>
               <li><a href="mailto:research@zyralabs.com">research@zyralabs.com</a></li>
               <li><a href="mailto:sales@zyralabs.com">sales@zyralabs.com</a></li>
-              <li>
-                <a href="https://wa.me/971543800625" target="_blank" rel="noopener noreferrer">
-                  whatsapp · +971 54 380 0625
-                </a>
-              </li>
-              <li>
-                <a href="https://maps.google.com/?q=Dubai+Science+Park" target="_blank" rel="noopener noreferrer">
-                  lab 05 · dubai science park
-                </a>
-              </li>
-              <li><span className="zl-footer__info">sun – fri · 09:00 – 21:00 gst</span></li>
             </ul>
           </div>
         </div>

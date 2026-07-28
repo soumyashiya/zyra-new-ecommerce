@@ -1,7 +1,10 @@
 /* Central Order Management microservice — thin client.
    Base URL and endpoints per API_DOCUMENTATION.md. */
 
-const BASE = 'https://www.microservices.tech' // production
+// In dev, use a relative base ('') so requests go through the Vite dev-server
+// proxy (see vite.config.js), which forwards to the API server-side and sidesteps
+// the browser CORS block. In production the app talks to the API directly.
+const BASE = import.meta.env.DEV ? '' : 'https://www.microservices.tech'
 // const BASE = 'http://localhost:5003' // TESTING — local user-order-service
 
 // zyra is a static Vite SPA, not Next.js — it has no server-side API routes

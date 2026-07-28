@@ -1,11 +1,14 @@
 import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Check, Minus, Plus, ShoppingBag } from 'lucide-react'
+import { ArrowLeft, Check, FileCheck2, Minus, Plus, ShoppingBag } from 'lucide-react'
 import { products, getProductById } from './dealsProducts'
 import { useCart } from '../context/cart-context'
 import SiteFooter from '../components/SiteFooter'
 import Seo from '../components/Seo'
 import './ProductDetail.css'
+
+const RESEARCH_DISCLAIMER =
+  'FOR RESEARCH PURPOSES ONLY. Not intended for human or veterinary use. Not intended to diagnose, treat, cure, or prevent any disease. Products are supplied strictly for laboratory and analytical research conducted by qualified professionals.'
 
 const SITE = 'https://zyralabs.com'
 // Bundled asset paths are root-relative (/assets/…); make them absolute for schema.
@@ -18,6 +21,7 @@ function ProductDetail() {
   const [qty, setQty] = useState(1)
   const [added, setAdded] = useState(false)
   const [activeImg, setActiveImg] = useState(0)
+  const [activeTab, setActiveTab] = useState(0)
 
   const gallery = useMemo(() => {
     if (!product) return []
@@ -45,6 +49,20 @@ function ProductDetail() {
       </div>
     )
   }
+
+  const infoTabs = [
+    product.packageContents && {
+      label: 'Package Contents',
+      content: (
+        <ul className="pd-tabs__list">
+          {product.packageContents.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      ),
+    },
+    product.storageLogic && { label: 'Storage Logic', content: <p>{product.storageLogic}</p> },
+  ].filter(Boolean)
 
   const handleAdd = () => {
     addToCart({
@@ -143,6 +161,9 @@ function ProductDetail() {
             <h1 className="pd-title">{product.title}</h1>
             <div className="pd-price">{product.price}</div>
             <p className="pd-desc">{product.description}</p>
+            <p className="pd-safety">
+              <strong>Research Use Disclaimer:</strong> {RESEARCH_DISCLAIMER}
+            </p>
 
             <div className="pd-actions">
               <div className="pd-qty" aria-label="Quantity">
@@ -178,6 +199,9 @@ function ProductDetail() {
                 )}
               </button>
             </div>
+            <p className="pd-safety pd-safety--compact">
+              For research purposes only — not for human or veterinary use.
+            </p>
 
             <dl className="pd-specs">
               {Object.entries(product.specs).map(([k, v]) => (
@@ -187,6 +211,88 @@ function ProductDetail() {
                 </div>
               ))}
             </dl>
+
+            {product.janoshik && (
+              <div className="pd-janoshik">
+                <a
+                  className="pd-janoshik__link"
+                  href={product.janoshik.reportUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FileCheck2 size={15} /> View Janoshik Analytical Report
+                </a>
+
+                <div className="pd-janoshik-card">
+                  <div className="pd-janoshik-card__head">
+                    <h3>Janoshik Third-Party Lab Analysis</h3>
+                    <p>Independently tested and verified by Janoshik Analytical.</p>
+                  </div>
+
+                  <div className="pd-janoshik-stats">
+                    <div className="pd-janoshik-stat">
+                      <span>Batch Number</span>
+                      <strong>{product.janoshik.batchNumber}</strong>
+                    </div>
+                    <div className="pd-janoshik-stat">
+                      <span>Fill Volume</span>
+                      <strong>{product.janoshik.fillVolume}</strong>
+                    </div>
+                    {product.janoshik.purity && (
+                      <div className="pd-janoshik-stat">
+                        <span>Purity</span>
+                        <strong>{product.janoshik.purity}</strong>
+                      </div>
+                    )}
+                  </div>
+
+                  <table className="pd-janoshik-table">
+                    <thead>
+                      <tr>
+                        <th>Compound</th>
+                        <th>Concentration</th>
+                        <th>Verified Content</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {product.janoshik.rows.map((row) => (
+                        <tr key={row.compound}>
+                          <td>{row.compound}</td>
+                          <td>{row.concentration}</td>
+                          <td>{row.verifiedContent}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+
+                  {product.janoshik.note && (
+                    <p className="pd-janoshik-note">{product.janoshik.note}</p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {infoTabs.length > 0 && (
+              <div className="pd-tabs">
+                <div className="pd-tabs__nav" role="tablist" aria-label="Product information">
+                  {infoTabs.map((tab, i) => (
+                    <button
+                      key={tab.label}
+                      type="button"
+                      role="tab"
+                      aria-selected={activeTab === i}
+                      className={`pd-tabs__btn ${activeTab === i ? 'is-active' : ''}`}
+                      onClick={() => setActiveTab(i)}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="pd-tabs__panel">{infoTabs[activeTab]?.content}</div>
+              </div>
+            )}
+
+            <p className="pd-safety pd-safety--footer">{RESEARCH_DISCLAIMER}</p>
           </div>
         </section>
 

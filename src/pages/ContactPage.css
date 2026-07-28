@@ -129,6 +129,9 @@
   letter-spacing: -0.035em;
   color: var(--cream);
 }
+/* Dark block: inherit the light heading colour for the <em> accent
+   ("Get a chemist") so it doesn't render invisible on the dark background. */
+.zl-form-block__intro h2 em { color: inherit; }
 .zl-form-block__intro p { color: rgba(244,242,236,0.72); max-width: 44ch; }
 .zl-form-block__list {
   list-style: none;

@@ -68,11 +68,17 @@
   display: block;
 }
 
-/* Gallery — main image + thumbnail row (Alluvi-style) */
+/* Gallery — main image + thumbnail row (Alluvi-style).
+   Sticks in place while the taller right-hand content scrolls past it,
+   then releases naturally once the hero row ends (see ≤960px override,
+   where the layout stacks and sticky no longer applies). */
 .pd-gallery {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  position: sticky;
+  top: 96px;
+  align-self: start;
 }
 .pd-gallery__main {
   position: relative;
@@ -313,6 +319,197 @@
   text-align: right;
 }
 
+/* Safety protocol note */
+.pd-safety {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.65);
+  background: rgba(229, 70, 43, 0.06);
+  border: 1px solid rgba(229, 70, 43, 0.18);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 2px 0 0;
+  max-width: 56ch;
+}
+.pd-safety--compact {
+  font-size: 11px;
+  padding: 7px 12px;
+  max-width: none;
+  background: transparent;
+  border: 0;
+  color: rgba(0, 0, 0, 0.45);
+  margin-top: -6px;
+}
+.pd-safety--footer {
+  font-size: 11px;
+  line-height: 1.6;
+  max-width: none;
+  color: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  padding: 16px 0 0;
+  margin-top: 8px;
+}
+.pd-safety strong {
+  color: #1a1a1a;
+}
+
+/* Janoshik third-party lab analysis */
+.pd-janoshik {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pd-janoshik__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vyral-red, #E5462B);
+  text-decoration: none;
+}
+.pd-janoshik-card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 20px clamp(16px, 3vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pd-janoshik-card__head h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.pd-janoshik-card__head p {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0;
+}
+.pd-janoshik-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+}
+.pd-janoshik-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #faf8f4;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.pd-janoshik-stat span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.5);
+}
+.pd-janoshik-stat strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.pd-janoshik-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.pd-janoshik-table th,
+.pd-janoshik-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.pd-janoshik-table th {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+.pd-janoshik-table td {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+.pd-janoshik-note {
+  font-size: 11px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* Package Contents / Storage Logic / Supply Chain tabs */
+.pd-tabs {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pd-tabs__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.pd-tabs__btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 10px 4px;
+  margin-right: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.pd-tabs__btn:hover {
+  color: #1a1a1a;
+}
+.pd-tabs__btn.is-active {
+  color: #1a1a1a;
+  border-color: var(--vyral-red, #E5462B);
+}
+.pd-tabs__panel {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.72);
+}
+.pd-tabs__panel p {
+  margin: 0;
+}
+.pd-tabs__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pd-tabs__list li {
+  padding-left: 16px;
+  position: relative;
+}
+.pd-tabs__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--vyral-red, #E5462B);
+}
+
 /* Related products */
 .pd-related {
   margin-top: 96px;
@@ -445,6 +642,10 @@
   .pd-gallery__main img {
     object-fit: contain;
   }
+  .pd-gallery {
+    position: static;
+    top: auto;
+  }
   .pd-hero__body {
     padding-top: 2px;
   }
@@ -511,6 +712,16 @@
   .pd-specs {
     grid-template-columns: 1fr;
     margin-top: 24px;
+  }
+  .pd-janoshik-stats {
+    grid-template-columns: 1fr;
+  }
+  .pd-janoshik-table {
+    font-size: 12px;
+  }
+  .pd-janoshik-table th,
+  .pd-janoshik-table td {
+    padding: 8px;
   }
 
   /* Actions: wrap nicely, touch targets ≥48px */
