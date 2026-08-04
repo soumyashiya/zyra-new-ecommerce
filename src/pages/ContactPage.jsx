@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
+import { Check } from 'lucide-react'
 import '@fontsource-variable/geist'
 import SiteFooter from '../components/SiteFooter'
 import Seo from '../components/Seo'
@@ -128,6 +129,7 @@ const topics = ['CoA request', 'Custom synthesis', 'Wholesale pricing', 'Shippin
 const ContactForm = () => {
   const [status, setStatus] = useState('idle')
   const [values, setValues] = useState({ name: '', email: '', company: '', topic: topics[0], message: '' })
+  const [showModal, setShowModal] = useState(false)
 
   const onChange = (e) => setValues((v) => ({ ...v, [e.target.name]: e.target.value }))
 
@@ -135,8 +137,29 @@ const ContactForm = () => {
     e.preventDefault()
     if (!values.name || !values.email || !values.message) return
     setStatus('sending')
-    setTimeout(() => setStatus('sent'), 900)
+    setTimeout(() => {
+      setStatus('sent')
+      setShowModal(true)
+    }, 900)
   }
+
+  const closeModal = () => {
+    setShowModal(false)
+    setStatus('idle')
+    setValues({ name: '', email: '', company: '', topic: topics[0], message: '' })
+  }
+
+  useEffect(() => {
+    if (!showModal) return undefined
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => { if (e.key === 'Escape') closeModal() }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [showModal])
 
   return (
     <section className="zl-form-block">
@@ -206,6 +229,30 @@ const ContactForm = () => {
           </div>
         </form>
       </div>
+
+      {showModal && (
+        <div
+          className="zl-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="zl-contact-modal-title"
+          onClick={closeModal}
+        >
+          <div className="zl-modal__card" onClick={(e) => e.stopPropagation()}>
+            <div className="zl-modal__check" aria-hidden="true">
+              <Check size={28} strokeWidth={2.4} />
+            </div>
+            <h2 id="zl-contact-modal-title" className="zl-modal__title">Message sent</h2>
+            <p className="zl-modal__lead">
+              Thanks {values.name || 'for reaching out'} — a chemist will reply to{' '}
+              <span className="zl-modal__email">{values.email || 'your inbox'}</span> within the hour during lab hours.
+            </p>
+            <button type="button" className="zl-btn zl-btn--primary zl-modal__cta" onClick={closeModal}>
+              Done
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

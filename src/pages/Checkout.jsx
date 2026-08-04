@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Check } from 'lucide-react'
 import { useCart, priceToNumber } from '../context/cart-context'
+import { useAuth } from '../context/auth-context'
 import { promoValidate, userOrderCreate, sendOrderConfirmationEmail, ApiError } from '../lib/api'
 import './Cart.css'
 
@@ -26,6 +27,7 @@ const makeOrderId = () =>
 
 function Checkout() {
   const { items, subtotal, clearCart } = useCart()
+  const { user } = useAuth()
   const navigate = useNavigate()
 
   const [form, setForm] = useState({
@@ -39,6 +41,16 @@ function Checkout() {
     postcode: '',
     country: COUNTRIES[0],
   })
+
+  // Signed-in shoppers must check out under their account email, otherwise the
+  // order won't match what "My Orders" looks up (userOrdersByEmail(user.email)).
+  useEffect(() => {
+    if (user && user.email && !form.email) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setForm((f) => ({ ...f, email: user.email }))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
   const [placing, setPlacing] = useState(false)
   const [error, setError] = useState(null)
   const [placedOrder, setPlacedOrder] = useState(null)
@@ -150,6 +162,7 @@ function Checkout() {
       subtotal: Number(subtotal.toFixed(2)),
       discountAmount: Number(discount.toFixed(2)),
       total: Number(total.toFixed(2)),
+      currency: 'USD',
       promoCode: applied ? applied.code : null,
       promoDiscount: applied ? applied.percent : undefined,
       payment_method: 'manual',
@@ -257,6 +270,8 @@ function Checkout() {
                   onChange={(e) => onField('email', e.target.value)}
                   required
                   autoComplete="email"
+                  readOnly={!!(user && user.email)}
+                  title={user && user.email ? 'Orders are linked to your account email' : undefined}
                 />
                 <input
                   className="zl-input"

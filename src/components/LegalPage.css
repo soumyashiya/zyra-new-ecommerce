@@ -1,0 +1,194 @@
+/* =========================================================================
+   Zyra Labs — shared legal/policy page template
+   Scoped under .zl-legal. Redeclares the .zl-page design tokens since each
+   route ships as its own lazy chunk (see About.css for the source pattern).
+   ========================================================================= */
+
+.zl-page.zl-legal {
+  --cream:        #F4F2EC;
+  --paper:        #FFFFFF;
+  --bone:         #E8E5DC;
+  --ash:          #6C6C6C;
+  --ink:          #0E0E0E;
+  --vyral-red:    #E5462B;
+  --vyral-red-hover: #C9381F;
+
+  --line-on-cream: rgba(14, 14, 14, 0.10);
+  --line-strong:   rgba(14, 14, 14, 0.22);
+
+  --font-sans:  "Geist Variable", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Instrument Serif", "Times New Roman", Times, serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-base: 220ms;
+
+  position: relative;
+  min-height: 100vh;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.zl-legal * { box-sizing: border-box; }
+
+/* ---------- Header ---------- */
+.zl-legal__head {
+  padding: 160px 20px 56px;
+  border-bottom: 1px solid var(--line-on-cream);
+}
+.zl-legal__head-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.zl-legal__eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vyral-red);
+}
+.zl-legal__title {
+  margin: 0 0 12px;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.zl-legal__updated {
+  margin: 0 0 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ash);
+}
+.zl-legal__intro {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(14, 14, 14, 0.68);
+  max-width: 62ch;
+}
+
+/* ---------- Body ---------- */
+.zl-legal__body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 20px 40px;
+}
+.zl-legal__section {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line-on-cream);
+}
+.zl-legal__section:first-child { padding-top: 0; }
+.zl-legal__section h2 {
+  margin: 0 0 14px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.zl-legal__section p {
+  margin: 0 0 14px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: rgba(14, 14, 14, 0.72);
+}
+.zl-legal__section p:last-child { margin-bottom: 0; }
+.zl-legal__section ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.zl-legal__section ul:last-child { margin-bottom: 0; }
+.zl-legal__section li {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(14, 14, 14, 0.72);
+}
+.zl-legal__section strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Contact block ---------- */
+.zl-legal__contact {
+  padding: 40px 0 8px;
+}
+.zl-legal__contact h2 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.zl-legal__contact p {
+  margin: 0 0 20px;
+  font-size: 15.5px;
+  color: rgba(14, 14, 14, 0.68);
+}
+.zl-legal__contact-list {
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.zl-legal__contact-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+}
+.zl-legal__contact-list span {
+  color: var(--ash);
+  min-width: 120px;
+}
+.zl-legal__contact-list a {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  transition: color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+.zl-legal__contact-list a:hover {
+  color: var(--vyral-red);
+  border-color: var(--vyral-red);
+}
+
+/* ---------- Buttons (subset of the shared .zl-btn system) ---------- */
+.zl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+.zl-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: rgba(14, 14, 14, 0.22);
+}
+.zl-btn--ghost:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.zl-legal__contact-cta { margin-top: 4px; }
+
+@media (max-width: 600px) {
+  .zl-legal__head { padding: 128px 20px 40px; }
+  .zl-legal__body { padding: 40px 20px 32px; }
+  .zl-legal__contact-list li { flex-direction: column; gap: 2px; }
+  .zl-legal__contact-list span { min-width: 0; }
+}

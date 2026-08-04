@@ -185,6 +185,13 @@ function SiteFooter() {
 
         <div className="zl-footer__bottom">
           <div>© {new Date().getFullYear()} Zyra Labs · all rights reserved</div>
+          <div className="zl-footer__legal">
+            <NavLink to="/press-release">Press Release</NavLink>
+            <NavLink to="/refund-policy">Refund Policy</NavLink>
+            <NavLink to="/shipping-policy">Shipping Policy</NavLink>
+            <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+            <NavLink to="/terms-of-service">Terms of Service</NavLink>
+          </div>
           <div className="zl-footer__socials">
             <a href="https://instagram.com/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" size={16} /></a>
             <a href="https://twitter.com/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><Icon name="x-twitter" size={14} /></a>

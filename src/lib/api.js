@@ -181,3 +181,53 @@ export const authResetPassword = ({ token, password }) =>
     method: 'POST',
     body: { token, password },
   })
+
+/* ---------- Payment capture ("complete your payment" email link) ----------
+   Used for orders that weren't paid at checkout — the customer follows a
+   /payment-capture/:token link from an email. The token itself is the auth,
+   so no Authorization header is sent (unlike the `auth: true` endpoints above). */
+export const paymentCaptureValidate = (token) =>
+  request('/api/payment-capture/validate', {
+    method: 'POST',
+    body: { token },
+  })
+
+export const paymentCaptureApplyPromo = ({ token, promoCode }) =>
+  request('/api/payment-capture/apply-promo', {
+    method: 'POST',
+    body: { token, promoCode },
+  })
+
+// Multipart upload — bypasses the JSON request() helper above since the body
+// is FormData, not JSON. Content-Type is intentionally left unset so the
+// browser fills in the multipart boundary itself. Mirrors request()'s
+// response handling/error-normalization so callers get the same ApiError
+// shape as every other endpoint in this file.
+export async function paymentCaptureUpload({ token, file }) {
+  const form = new FormData()
+  form.append('token', token)
+  form.append('paymentScreenshot', file)
+
+  let res
+  try {
+    res = await fetch(`${BASE}/api/payment-capture/upload`, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: form,
+    })
+  } catch (e) {
+    throw new ApiError(e.message || 'Network error', 0, null)
+  }
+
+  const text = await res.text()
+  let data = null
+  try { data = text ? JSON.parse(text) : null } catch { /* non-JSON body */ }
+
+  if (!res.ok) {
+    const message =
+      (data && (data.error || data.message)) ||
+      `Request failed with ${res.status}`
+    throw new ApiError(message, res.status, data)
+  }
+  return data
+}

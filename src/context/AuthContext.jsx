@@ -17,6 +17,8 @@ const readCachedUser = () => {
     return raw ? JSON.parse(raw) : null
   } catch {
     return null
+
+    
   }
 }
 

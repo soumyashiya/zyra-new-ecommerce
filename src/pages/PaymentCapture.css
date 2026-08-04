@@ -1,0 +1,230 @@
+/* =========================================================================
+   Payment Capture — scoped additions on top of Cart.css's shared shell
+   (.zl-shop-page / .zl-shop-grid / .zl-checkout-form / .zl-summary / .zl-input
+   / .zl-btn-solid / .zl-promo__* / .zl-chip). Only presentational — no new
+   copy, just a layout that matches the rest of the site.
+
+   All page-specific rules are scoped under .zl-pc-form / .zl-pc-summary
+   (added as extra classes alongside the shared .zl-checkout-form /
+   .zl-summary in the JSX) so this styling never leaks into Cart or Checkout,
+   which reuse those same shared classes. ========================================================================= */
+
+/* ---------- Shared icon badge (Bank / Upload section headers) ----------
+   Turns the existing inline lucide icons into the same circular, tinted
+   badge used for empty/confirm states elsewhere on the site
+   (.zl-cart-empty__icon, .zl-confirm__check, .zl-pc-status__icon). */
+.zl-pc-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: rgba(229, 70, 43, 0.10);
+  color: var(--vyral-red);
+}
+
+/* ---------- Section rhythm ----------
+   A clean divider between Bank transfer / Promo / Upload instead of them
+   just running together with vertical gap. */
+.zl-pc-form .zl-checkout-form__section + .zl-checkout-form__section {
+  padding-top: 32px;
+  border-top: 1px solid var(--line-on-cream);
+}
+.zl-pc-form .zl-checkout-form__section:not(.zl-pc-bank) h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- Bank transfer details ----------
+   Elevated into its own card (paper + soft shadow, same language as
+   .zl-confirm / .zl-modal__card) since this is the single most important
+   block on the page — the money has to land in the right place. */
+.zl-pc-bank {
+  padding: clamp(20px, 3vw, 28px);
+  border-radius: 24px;
+  background: var(--paper);
+  border: 1px solid var(--line-on-cream);
+  box-shadow: 0 30px 60px -42px rgba(14, 14, 14, 0.18);
+}
+.zl-pc-bank h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.zl-pc-bank__rows {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+.zl-pc-bank__rows > div {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--cream);
+  border: 1px solid var(--line-on-cream);
+}
+.zl-pc-bank__rows dt {
+  margin: 0 0 4px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.zl-pc-bank__rows dd {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  word-break: break-word;
+}
+/* Sort code / account number / reference read as identifiers, not prose —
+   a tabular monospace treatment (common for bank/payment UI) makes them
+   easier to scan and copy correctly. Payee name (first cell) stays in the
+   regular typeface since it's a name, not a code. */
+.zl-pc-bank__rows > div:not(:first-child) dd {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Upload section ---------- */
+.zl-pc-upload { display: flex; flex-direction: column; gap: 14px; align-items: stretch; }
+.zl-pc-upload .zl-btn-solid { margin-top: 4px; align-self: flex-start; }
+
+.zl-pc-dropzone {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 36px 24px;
+  border-radius: 20px;
+  border: 1.5px dashed var(--line-strong);
+  background: var(--card, #FBF9F4);
+  color: var(--ash);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.zl-pc-dropzone:hover { border-color: var(--vyral-red); color: var(--ink); transform: translateY(-1px); }
+.zl-pc-dropzone.has-file { border-style: solid; border-color: var(--vyral-red); background: var(--paper); color: var(--ink); }
+.zl-pc-dropzone__icon {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  padding: 13px;
+  box-sizing: content-box;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--vyral-red);
+  transition: background var(--dur-base) var(--ease-out);
+}
+.zl-pc-dropzone.has-file .zl-pc-dropzone__icon { background: var(--cream); }
+.zl-pc-dropzone__text {
+  max-width: 100%;
+  font-size: 0.92rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.zl-pc-dropzone__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.zl-pc-dropzone__input:disabled { cursor: wait; }
+
+/* ---------- Upload outcome ---------- */
+.zl-pc-outcome {
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--paper);
+  border: 1px solid var(--line-on-cream);
+  box-shadow: 0 24px 48px -36px rgba(14, 14, 14, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.zl-pc-outcome p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--ink); }
+
+/* ---------- Amount due (scoped so Cart/Checkout's .zl-summary is untouched) ---------- */
+.zl-pc-summary {
+  /* Desktop keeps the shared .zl-summary `position: sticky` untouched
+     (below) so the sidebar still follows scroll like on Cart/Checkout. */
+  overflow: hidden;
+  box-shadow: 0 30px 60px -42px rgba(14, 14, 14, 0.18);
+}
+.zl-pc-summary::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--vyral-red);
+}
+.zl-pc-summary .zl-summary__total dd {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Loading / invalid / error states ---------- */
+.zl-pc-status {
+  margin-top: 40px;
+  padding: 64px 24px;
+  border: 1px solid var(--line-on-cream);
+  border-radius: 28px;
+  background: var(--paper);
+  box-shadow: 0 40px 80px -40px rgba(14, 14, 14, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+.zl-pc-status__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--card, #FBF9F4);
+  color: var(--vyral-red);
+  display: grid;
+  place-items: center;
+}
+.zl-pc-status__icon--bad { color: var(--vyral-red); }
+.zl-pc-status__icon--loading { color: var(--ash); }
+.zl-pc-status .zl-orders__hint { max-width: 46ch; }
+
+.zl-spin { animation: zl-pc-spin 0.9s linear infinite; }
+@keyframes zl-pc-spin { to { transform: rotate(360deg); } }
+
+/* Cart.css switches the shared .zl-summary to `position: static` at
+   <=960px (stacked single-column layout). `static` wouldn't contain the
+   accent bar's `position: absolute` below (it'd position against the page
+   instead of the card), so re-establish a positioning context here — and
+   explicitly zero out the inherited sticky `top: 110px`, which otherwise
+   still applies once position is no longer `static` and would shove the
+   card 110px down into the footer. */
+@media (max-width: 960px) {
+  .zl-pc-summary { position: relative; top: auto; }
+}
+
+@media (max-width: 600px) {
+  .zl-pc-bank { padding: 20px; border-radius: 20px; }
+  .zl-pc-bank__rows { grid-template-columns: 1fr; }
+  .zl-pc-dropzone { padding: 28px 18px; }
+  .zl-pc-status { margin-top: 24px; padding: 48px 20px; border-radius: 22px; }
+}

@@ -1,7 +1,245 @@
 /* =========================================================================
    Zyra Labs — Contact page
-   Scoped under .zl-contact. Reuses .zl-page tokens & base styles.
+   Scoped under .zl-contact. Defines its own copy of the shared tokens,
+   banner, eyebrow & button styles (same pattern as About.css / Cart.css /
+   ServicesPage.css) so this page renders correctly on a direct visit,
+   without depending on another page's CSS having already loaded.
    ========================================================================= */
+
+.zl-contact {
+  --cream:        #F4F2EC;
+  --paper:        #FFFFFF;
+  --bone:         #E8E5DC;
+  --ash:          #6C6C6C;
+  --ink:          #0E0E0E;
+  --vyral-red:    #E5462B;
+  --vyral-red-hover: #C9381F;
+
+  --line-on-cream: rgba(14, 14, 14, 0.10);
+
+  --font-sans:  "Geist Variable", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Instrument Serif", "Times New Roman", Times, serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-base: 220ms;
+
+  position: relative;
+  margin-top: calc(-1 * var(--header-offset));
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.zl-contact * { box-sizing: border-box; }
+.zl-contact h1, .zl-contact h2, .zl-contact h3, .zl-contact h4 { margin: 0; letter-spacing: -0.025em; font-weight: 500; }
+.zl-contact p { margin: 0; color: rgba(14,14,14,0.66); }
+.zl-contact em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+/* ---------- Reveal ---------- */
+.zl-reveal-pre {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 560ms var(--ease-out) var(--reveal-delay, 0ms),
+    transform 560ms var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+/* ---------- Eyebrow ---------- */
+.zl-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.zl-eyebrow--on-dark { color: rgba(244,242,236,0.55); }
+
+/* ---------- Buttons ---------- */
+.zl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+.zl-btn--primary {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+.zl-btn--primary:hover {
+  background: var(--vyral-red);
+  border-color: var(--vyral-red);
+  transform: translateY(-2px);
+}
+
+/* =========================================================================
+   Banner — hero (blurred bg, mono labels, huge bottom title)
+   ========================================================================= */
+.zl-banner {
+  position: relative;
+  height: 100svh;
+  min-height: 100svh;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  background: #0a0a0a;
+  isolation: isolate;
+}
+.zl-banner__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+  filter: brightness(0.78) saturate(0.95);
+  animation: zl-banner-bg-in 1600ms var(--ease-out) both;
+}
+.zl-banner__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 700px at 50% 100%, rgba(229,70,43,0.24), transparent 70%),
+    linear-gradient(180deg, rgba(11,11,11,0.30) 0%, rgba(11,11,11,0.55) 60%, rgba(11,11,11,0.85) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.zl-banner__labels {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 clamp(20px, 5vw, 64px);
+  pointer-events: none;
+}
+.zl-banner__labels span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  opacity: 0;
+  animation: zl-banner-fade-up 600ms var(--ease-out) forwards;
+}
+.zl-banner__labels span:nth-child(1) { animation-delay: 200ms; }
+.zl-banner__labels span:nth-child(2) { animation-delay: 300ms; }
+.zl-banner__labels span:nth-child(3) { animation-delay: 400ms; }
+.zl-banner__labels span:nth-child(4) { animation-delay: 500ms; }
+.zl-banner__title {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 3;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: clamp(180px, 22vw, 360px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.85;
+  color: #fff;
+  margin: 0;
+  pointer-events: none;
+}
+.zl-banner__title-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em);
+  animation: zl-banner-letter 900ms var(--ease-out) both;
+  will-change: transform, opacity;
+}
+.zl-banner__title-sub {
+  display: inline-block;
+  margin-left: 0.2em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.3em;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  color: var(--vyral-red);
+  vertical-align: baseline;
+  opacity: 0;
+  transform: translateY(0.6em);
+  animation: zl-banner-letter 900ms var(--ease-out) both;
+  will-change: transform, opacity;
+}
+@keyframes zl-banner-bg-in {
+  from { transform: scale(1.08); opacity: 0.4; }
+  to   { transform: scale(1);    opacity: 1;   }
+}
+@keyframes zl-banner-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 0.85; transform: translateY(0); }
+}
+@keyframes zl-banner-letter {
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 1024px) {
+  .zl-banner__title { font-size: clamp(140px, 25vw, 240px); }
+}
+@media (max-width: 768px) {
+  .zl-banner__labels {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 16px;
+    top: 42%;
+  }
+  .zl-banner__labels span { font-size: 10px; letter-spacing: 0.1em; }
+  .zl-banner__title { font-size: clamp(104px, 26vw, 210px); bottom: 32px; }
+}
+@media (max-width: 600px) {
+  .zl-banner__title { font-size: clamp(90px, 25vw, 170px); bottom: 28px; }
+}
+@media (max-width: 480px) {
+  .zl-banner__title { font-size: clamp(78px, 24vw, 140px); bottom: 24px; }
+  .zl-banner__labels span { font-size: 9px; letter-spacing: 0.08em; }
+}
+@media (max-width: 430px) {
+  .zl-banner__title { font-size: clamp(72px, 24vw, 120px); letter-spacing: -0.03em; bottom: 22px; }
+}
+@media (max-width: 375px) {
+  .zl-banner__title { font-size: clamp(62px, 22vw, 100px); }
+  .zl-banner__labels span { font-size: 8px; letter-spacing: 0.06em; }
+}
+@media (max-width: 320px) {
+  .zl-banner__title { font-size: clamp(54px, 21vw, 84px); bottom: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zl-banner__bg,
+  .zl-banner__labels span,
+  .zl-banner__title-letter,
+  .zl-banner__title-sub {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* =========================================================================
    Channels
@@ -205,10 +443,7 @@
   -moz-appearance: none;
   padding-right: 28px;
   cursor: pointer;
-}
-.zl-select option {
-  background: var(--ink);
-  color: var(--cream);
+  color-scheme: dark;
 }
 .zl-select svg {
   position: absolute;
@@ -228,9 +463,9 @@
   gap: 20px;
   flex-wrap: wrap;
 }
-.zl-form__note {
+.zl-form__foot .zl-form__note {
   font-size: 0.85rem;
-  color: rgba(244,242,236,0.5);
+  color: rgba(244,242,236,0.6);
   margin: 0;
   max-width: 44ch;
 }
@@ -251,6 +486,71 @@
   color: var(--cream);
   border-color: rgba(244,242,236,0.28);
   cursor: default;
+}
+
+/* ---------- Submit confirmation modal ---------- */
+.zl-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(14, 14, 14, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: zl-modal-fade 220ms var(--ease-out);
+}
+@keyframes zl-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.zl-modal__card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--paper);
+  border-radius: 24px;
+  padding: 44px 36px 36px;
+  text-align: center;
+  box-shadow: 0 60px 120px -40px rgba(14, 14, 14, 0.45);
+  animation: zl-modal-pop 320ms var(--ease-out);
+}
+@keyframes zl-modal-pop {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+.zl-modal__check {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--cream);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 22px;
+}
+.zl-modal__title {
+  font-size: 1.75rem;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.zl-modal__lead {
+  font-size: 0.92rem;
+  color: rgba(14,14,14,0.6);
+  margin: 0 auto 28px;
+  max-width: 40ch;
+  line-height: 1.55;
+}
+.zl-modal__email { color: var(--ink); font-weight: 500; }
+.zl-modal__cta { width: 100%; justify-content: center; }
+
+@media (max-width: 480px) {
+  .zl-modal__card { padding: 36px 22px 26px; }
+  .zl-modal__title { font-size: 1.45rem; }
 }
 
 /* =========================================================================

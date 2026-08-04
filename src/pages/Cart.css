@@ -34,18 +34,45 @@
   font-size: 1rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  /* Flex column so short-content pages (e.g. empty "My orders", the
+     Track order form before a search) push their footer to the bottom of
+     the viewport instead of leaving a gap of page background below it. */
+  display: flex;
+  flex-direction: column;
+  /* The full-bleed footer below intentionally overshoots to the viewport
+     edge — clip it so it can never introduce a horizontal scrollbar. */
+  overflow-x: hidden;
 }
 .zl-shop-page * { box-sizing: border-box; }
 
 .zl-shop-page__inner {
   max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
+  flex: 1 0 auto;
 }
 
 /* The page's own bottom padding sits below the footer, so the footer needs
-   its own breathing room above it. */
+   its own breathing room above it. Full-bleed: .zl-shop-page has its own
+   left/right padding (for the page content), which the footer would
+   otherwise inherit as an unwanted inset — break it out to span the full
+   viewport width edge-to-edge, same as the footer looks on every other page. */
 .zl-shop-page > .zl-footer {
   margin-top: clamp(48px, 6vw, 88px);
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Pages that render <SiteFooter> (Orders, TrackOrder, OrderConfirmation,
+   PaymentCapture) already get bottom breathing room from the footer's own
+   padding — the shell's bottom padding above is only meant for footer-less
+   pages (Cart, Checkout, Signin, etc). Without this override it stacks an
+   extra, empty gap of page background below the dark footer bar. Higher
+   specificity than the padding shorthand (incl. its media-query overrides)
+   so one rule covers every breakpoint. */
+.zl-shop-page:has(> .zl-footer) {
+  padding-bottom: 0;
 }
 
 /* ---------- Head ---------- */

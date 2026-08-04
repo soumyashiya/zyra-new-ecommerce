@@ -20,9 +20,15 @@ const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))
 const ResetPassword = lazy(() => import('./pages/ResetPassword'))
 const Orders = lazy(() => import('./pages/Orders'))
 const TrackOrder = lazy(() => import('./pages/TrackOrder'))
+const PaymentCapture = lazy(() => import('./pages/PaymentCapture'))
 const About = lazy(() => import('./pages/About'))
 const ServicesPage = lazy(() => import('./pages/ServicesPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
+const PressRelease = lazy(() => import('./pages/PressRelease'))
+const RefundPolicy = lazy(() => import('./pages/RefundPolicy'))
+const ShippingPolicy = lazy(() => import('./pages/ShippingPolicy'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 
 /* Reset scroll to the top on every route change, so each page
    opens at its hero instead of keeping the previous scroll position.
@@ -73,6 +79,12 @@ function App() {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/track-order" element={<TrackOrder />} />
+            <Route path="/payment-capture/:token" element={<PaymentCapture />} />
+            <Route path="/press-release" element={<PressRelease />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<Deals />} />
           </Routes>
         </Suspense>

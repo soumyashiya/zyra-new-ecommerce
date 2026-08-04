@@ -8,6 +8,13 @@
   /* Height the header occupies; pages that pull content under the fixed
      header reference this so the offset stays in sync at every breakpoint. */
   --header-offset: 88px;
+
+  /* Site is dark-themed throughout. Without this, browsers draw native
+     form chrome (select popups, scrollbars) with light-mode defaults —
+     e.g. Chromium's <select> dropdown ignores custom `background` on
+     <option> and falls back to a white popup, making light option text
+     unreadable. */
+  color-scheme: dark;
 }
 
 html {

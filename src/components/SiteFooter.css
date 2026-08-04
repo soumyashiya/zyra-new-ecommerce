@@ -232,6 +232,19 @@
   font-size: 0.78rem;
   color: rgba(244, 242, 236, 0.55);
 }
+.zl-footer__legal {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.zl-footer__legal a {
+  color: rgba(244, 242, 236, 0.55);
+  text-decoration: none;
+  transition: color var(--dur-base) var(--ease-out);
+}
+.zl-footer__legal a:hover { color: var(--cream); }
+
 .zl-footer__socials {
   display: inline-flex;
   align-items: center;
