@@ -1,7 +1,29 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ShieldCheck, Truck, Snowflake, FlaskConical } from 'lucide-react'
 import { newsletterSubscribe, ApiError } from '../lib/api'
+import { ArrowRight } from './ui'
+import { useReveal } from '../lib/ui-hooks'
 import './SiteFooter.css'
+
+/* Reassurance strip that caps the white sheet before the orange footer. */
+const PROMISES = [
+  { icon: ShieldCheck, title: '≥99% verified purity', note: 'HPLC tested, CoA on request' },
+  { icon: Snowflake, title: 'Cold-chain shipping', note: 'Temperature-controlled, tracked' },
+  { icon: Truck, title: 'Free over $250', note: 'Same-day dispatch before 3pm' },
+  { icon: FlaskConical, title: 'Research-grade only', note: 'Not for human consumption' },
+]
+
+/* Looping claim strip at the foot of the orange panel. */
+const CLAIMS = [
+  'Independently verified',
+  'HPLC & MS tested',
+  'Batch-traceable',
+  'Cold-chain handled',
+  'CoA with every order',
+]
+
+const PAYMENTS = ['Visa', 'Mastercard', 'Amex', 'Discover', 'PayPal', 'Apple Pay', 'Google Pay']
 
 /* Newsletter form — posts to /api/newsletter/subscribe.
    States: idle → sending → success | error. Rate-limited server-side
@@ -27,7 +49,7 @@ function NewsletterForm() {
       setStatus('success')
       setMessage(res && res.already_subscribed
         ? "You're already on the list. See you in the next drop."
-        : "Subscribed — welcome to the lab.")
+        : 'Subscribed — welcome to the lab.')
       setEmail('')
     } catch (err) {
       setStatus('error')
@@ -40,13 +62,13 @@ function NewsletterForm() {
   }
 
   return (
-    <form className="zl-footer__news" onSubmit={submit} noValidate>
-      <div className="zl-footer__news-row">
+    <form className="ftr__news" onSubmit={submit} noValidate>
+      <div className="ftr__news-row">
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@lab.com"
+          placeholder="Enter your email"
           aria-label="Email address"
           autoComplete="email"
           disabled={status === 'sending'}
@@ -54,24 +76,25 @@ function NewsletterForm() {
         />
         <button
           type="submit"
-          className="zl-footer__news-btn"
+          className="ftr__news-btn"
           disabled={status === 'sending'}
+          aria-label="Subscribe"
         >
-          {status === 'sending' ? '…' : 'Subscribe'}
+          <ArrowRight size={20} />
         </button>
       </div>
-      <label className="zl-footer__news-consent">
+
+      <label className="ftr__news-consent">
         <input
           type="checkbox"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
         />
-        <span>
-          I agree to receive lab updates and batch drops. Unsubscribe anytime.
-        </span>
+        <span>I agree to receive lab updates and batch drops. Unsubscribe anytime.</span>
       </label>
+
       {message && (
-        <p className={`zl-footer__news-msg zl-footer__news-msg--${status}`} role="status">
+        <p className={`ftr__news-msg ftr__news-msg--${status}`} role="status">
           {message}
         </p>
       )}
@@ -79,16 +102,10 @@ function NewsletterForm() {
   )
 }
 
-const Icon = ({ name, size = 16 }) => {
+const Social = ({ name, size = 18 }) => {
   const P = {
-    width: size,
-    height: size,
-    viewBox: '0 0 24 24',
-    fill: 'none',
-    stroke: 'currentColor',
-    strokeWidth: 1.5,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
+    width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+    stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round',
   }
   switch (name) {
     case 'instagram':
@@ -128,79 +145,136 @@ const Icon = ({ name, size = 16 }) => {
 }
 
 function SiteFooter() {
+  /* The footer animates its own promise strip. Only the home page runs a
+     page-level reveal, so without this the strip stayed invisible
+     (opacity 0) on every other page. */
+  const promisesRef = useReveal()
+
+  const claimRun = (
+    <div className="zk-marquee__track" aria-hidden="true">
+      {CLAIMS.map((c) => (
+        <span className="ftr__claim" key={c}>
+          {c}
+          <span className="ftr__claim-dot" />
+        </span>
+      ))}
+    </div>
+  )
+
   return (
-    <footer className="zl-footer" aria-label="Site footer">
-      <div className="zl-footer__inner">
-        <div className="zl-footer__top">
-          <div className="zl-footer__brandcol">
-            <NavLink to="/" className="zl-footer__brand" aria-label="Zyra Labs — home">
-              <span className="zl-footer__brand-cap">Z</span>
-              <span className="zl-footer__brand-italic">y</span>
-              <span className="zl-footer__brand-cap">R</span>
-              <span className="zl-footer__brand-cap">A</span>
-              <span className="zl-footer__brand-sub">labs</span>
-            </NavLink>
-            <p className="zl-footer__tag">
-              Research-grade peptides and laboratory research compounds
-              formulated and tested. For laboratory research use only not
-              for human or veterinary consumption.
-            </p>
-            <div className="zl-footer__news-wrap">
-              <h4 className="zl-footer__news-title"></h4>
-              <p className="zl-footer__news-lead">
-                CoAs, batch drops, and lab notes no more than once a month.
-              </p>
+    <>
+      {/* Promise strip — still on the white sheet, rounding it off. */}
+      <section className="ftr-promises" aria-label="Our promises" ref={promisesRef}>
+        <div className="zk-container">
+          <ul className="ftr-promises__grid">
+            {PROMISES.map(({ icon: Ico, title, note }) => (
+              <li className="ftr-promises__item" key={title} data-rv="fade">
+                <Ico size={24} strokeWidth={1.5} aria-hidden="true" />
+                <div>
+                  <p className="ftr-promises__title">{title}</p>
+                  <p className="ftr-promises__note">{note}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <footer className="ftr" aria-label="Site footer">
+        <div className="zk-container">
+          <div className="ftr__top">
+            <nav className="ftr__cols" aria-label="Footer">
+              <div className="ftr__col">
+                <h4>Our products</h4>
+                <ul>
+                  <li><NavLink to="/services">All compounds</NavLink></li>
+                  <li><NavLink to="/product/retatrutide-40">Retatrutide</NavLink></li>
+                  <li><NavLink to="/product/tirzepatide">Tirzepatide</NavLink></li>
+                  <li><NavLink to="/product/bpc-157-tb-500">BPC-157 &amp; TB-500</NavLink></li>
+                  <li><NavLink to="/product/nad-plus-1000">NAD+</NavLink></li>
+                </ul>
+              </div>
+
+              <div className="ftr__col">
+                <h4>Learn</h4>
+                <ul>
+                  <li><NavLink to="/about">About Zyra Labs</NavLink></li>
+                  <li><NavLink to="/press-release">Press releases</NavLink></li>
+                  <li><NavLink to="/contact">Request a CoA</NavLink></li>
+                  <li><NavLink to="/services">Specs &amp; purity</NavLink></li>
+                  <li><NavLink to="/shipping-policy">Cold-chain handling</NavLink></li>
+                </ul>
+              </div>
+
+              <div className="ftr__col">
+                <h4>Help</h4>
+                <ul>
+                  <li><NavLink to="/signin">My account</NavLink></li>
+                  <li><NavLink to="/orders">My orders</NavLink></li>
+                  <li><NavLink to="/track-order">Track order</NavLink></li>
+                  <li><NavLink to="/contact">Contact us</NavLink></li>
+                  <li><NavLink to="/refund-policy">Returns</NavLink></li>
+                </ul>
+              </div>
+            </nav>
+
+            <div className="ftr__signup">
+              <h3 className="ftr__signup-title">Stay in the loop</h3>
               <NewsletterForm />
+              <p className="ftr__signup-note">
+                CoAs, batch drops and lab notes — no more than once a month.
+              </p>
+
+              <ul className="ftr__socials">
+                <li>
+                  <a href="https://instagram.com/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <Social name="instagram" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <Social name="x-twitter" size={16} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://youtube.com/@zyralabs" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <Social name="youtube" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://linkedin.com/company/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <Social name="linkedin" />
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
+        </div>
 
-          <div className="zl-footer__col">
-            <h4>the lab</h4>
-            <ul>
-              <li><NavLink to="/about">about zyra labs</NavLink></li>
-              <li><NavLink to="/services">shop peptides</NavLink></li>
-              <li><NavLink to="/track-order">track order</NavLink></li>
-              <li><NavLink to="/contact">request a CoA</NavLink></li>
-            </ul>
-          </div>
+        <div className="zk-marquee ftr__marquee" style={{ '--marquee-duration': '30s' }}>
+          {claimRun}
+          {claimRun}
+        </div>
 
-          <div className="zl-footer__col">
-            <h4>account</h4>
-            <ul>
-              <li><NavLink to="/signin">sign in</NavLink></li>
-              <li><NavLink to="/orders">my orders</NavLink></li>
-              <li><NavLink to="/cart">your cart</NavLink></li>
-              <li><NavLink to="/track-order">track order</NavLink></li>
-            </ul>
-          </div>
+        <div className="zk-container">
+          <div className="ftr__bottom">
+            <div className="ftr__legal">
+              <span>© {new Date().getFullYear()} Zyra Labs. All rights reserved.</span>
+              <ul>
+                <li><NavLink to="/refund-policy">Refund policy</NavLink></li>
+                <li><NavLink to="/privacy-policy">Privacy policy</NavLink></li>
+                <li><NavLink to="/terms-of-service">Terms of service</NavLink></li>
+                <li><NavLink to="/shipping-policy">Shipping policy</NavLink></li>
+              </ul>
+            </div>
 
-          <div className="zl-footer__col">
-            <h4>support</h4>
-            <ul>
-              <li><a href="mailto:research@zyralabs.com">research@zyralabs.com</a></li>
-              <li><a href="mailto:sales@zyralabs.com">sales@zyralabs.com</a></li>
+            <ul className="ftr__payments" aria-label="Accepted payment methods">
+              {PAYMENTS.map((p) => <li key={p}>{p}</li>)}
             </ul>
           </div>
         </div>
-
-        <div className="zl-footer__bottom">
-          <div>© {new Date().getFullYear()} Zyra Labs · all rights reserved</div>
-          <div className="zl-footer__legal">
-            <NavLink to="/press-release">Press Release</NavLink>
-            <NavLink to="/refund-policy">Refund Policy</NavLink>
-            <NavLink to="/shipping-policy">Shipping Policy</NavLink>
-            <NavLink to="/privacy-policy">Privacy Policy</NavLink>
-            <NavLink to="/terms-of-service">Terms of Service</NavLink>
-          </div>
-          <div className="zl-footer__socials">
-            <a href="https://instagram.com/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" size={16} /></a>
-            <a href="https://twitter.com/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><Icon name="x-twitter" size={14} /></a>
-            <a href="https://youtube.com/@zyralabs" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><Icon name="youtube" size={16} /></a>
-            <a href="https://linkedin.com/company/zyralabs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Icon name="linkedin" size={16} /></a>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   )
 }
 

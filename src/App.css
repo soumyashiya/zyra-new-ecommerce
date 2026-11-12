@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: var(--color-accent);
 }
 
-/* Accessibility: keyboard users can jump past the header straight to content.
-   Visually hidden until focused, then anchored to the top-left over the header. */
+/* Accessibility: keyboard users can jump past the header straight to content. */
 .skip-link {
   position: absolute;
   top: 0;
@@ -13,41 +13,38 @@
   z-index: 1000;
   padding: 10px 16px;
   margin: 8px;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #0a0a0a;
-  font: 600 14px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  border-radius: var(--radius-input);
+  background: var(--color-text);
+  color: #fff;
+  font: var(--font-bold) 14px/1 var(--font-body);
   transform: translateY(-150%);
-  transition: transform 0.18s ease;
+  transition: transform var(--ease-short);
 }
+
 .skip-link:focus {
   transform: translateY(0);
-  outline: 2px solid #0a0a0a;
-  outline-offset: 2px;
+}
+
+/* The white content sheet the whole site sits on. The header carries the
+   sheet's rounded top corners, so `.main` continues it flat and the footer
+   rounds it off at the bottom. */
+.main {
+  flex: 1;
+  background: var(--color-bg);
+  position: relative;
+  z-index: 1;
+}
+
+/* Chromeless routes (auth screens) render without the header, so the sheet
+   has to round its own top corners. */
+.main--bare {
+  border-start-start-radius: var(--radius-sheet);
+  border-start-end-radius: var(--radius-sheet);
+  min-height: 100vh;
 }
 
 /* Suspense fallback while a route chunk loads — reserves the viewport so the
-   incoming page doesn't shift layout (CLS-safe), stays on the app background. */
+   incoming page doesn't shift layout. */
 .route-fallback {
   min-height: 60vh;
-}
-
-.main {
-  flex: 1;
-  padding-top: var(--header-offset);
-}
-
-/* Chromeless routes (e.g. /signin) — no header, no header offset. */
-.main--bare {
-  padding-top: 0;
-}
-
-/* Keep the header offset in sync with the header's real height at each
-   breakpoint (header shrinks: 60px→56px→52px + its top gap). Pages that
-   pull their hero under the header read the same --header-offset. */
-@media (max-width: 720px) {
-  :root { --header-offset: 78px; }
-}
-@media (max-width: 480px) {
-  :root { --header-offset: 70px; }
 }

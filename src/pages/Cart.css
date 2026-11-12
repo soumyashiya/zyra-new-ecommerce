@@ -5,30 +5,29 @@
    ========================================================================= */
 
 .zl-shop-page {
-  --cream:        #F4F2EC;
-  --paper:        #FFFFFF;
-  --bone:         #E8E5DC;
-  --card:         #FBF9F4;
-  --ash:          #6C6C6C;
-  --mute:         #A0A09B;
-  --ink:          #0E0E0E;
-  --vyral-red:    #E5462B;
-  --vyral-red-hover: #C9381F;
+  --cream:        var(--color-bg-alt);
+  --paper:        var(--color-bg);
+  --bone:         rgb(var(--c-text) / 0.12);
+  --card:         var(--color-bg);
+  --ash:          var(--color-muted);
+  --mute:         var(--color-faint);
+  --ink:          var(--color-text);
+  --vyral-red:    var(--color-accent);
+  --vyral-red-hover: #c9480b;
 
-  --line-on-cream: rgba(14, 14, 14, 0.10);
-  --line-strong:   rgba(14, 14, 14, 0.22);
+  --line-on-cream: var(--color-border);
+  --line-strong:   rgb(var(--c-text) / 0.22);
 
-  --font-sans:  "Geist Variable", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Instrument Serif", "Times New Roman", Times, serif;
+  --font-sans:  var(--font-body);
+  --font-serif: var(--font-heading);
 
-  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-base:   220ms;
+  --ease-out:   var(--curve-primary);
+  --dur-base:   300ms;
 
   position: relative;
-  margin-top: calc(-1 * var(--header-offset));
   min-height: 100vh;
-  padding: 120px 16px 96px;
-  background: var(--cream);
+  padding: clamp(32px, 4vw, 56px) 16px 96px;
+  background: var(--color-bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -57,11 +56,15 @@
    left/right padding (for the page content), which the footer would
    otherwise inherit as an unwanted inset — break it out to span the full
    viewport width edge-to-edge, same as the footer looks on every other page. */
-.zl-shop-page > .zl-footer {
-  margin-top: clamp(48px, 6vw, 88px);
+.zl-shop-page > .ftr-promises,
+.zl-shop-page > .ftr {
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
+}
+
+.zl-shop-page > .ftr-promises {
+  margin-top: clamp(48px, 6vw, 88px);
 }
 
 /* Pages that render <SiteFooter> (Orders, TrackOrder, OrderConfirmation,
@@ -71,7 +74,7 @@
    extra, empty gap of page background below the dark footer bar. Higher
    specificity than the padding shorthand (incl. its media-query overrides)
    so one rule covers every breakpoint. */
-.zl-shop-page:has(> .zl-footer) {
+.zl-shop-page:has(> .ftr) {
   padding-bottom: 0;
 }
 
@@ -301,8 +304,8 @@
 .zl-cart-item__line {
   min-width: 80px;
   text-align: right;
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 1.15rem;
   color: var(--ink);
   margin: 0;
@@ -598,8 +601,8 @@
 .zl-summary__it-line {
   min-width: 60px;
   text-align: right;
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 1rem;
   color: var(--ink);
   margin: 0;
@@ -694,8 +697,8 @@
   font-weight: 500;
 }
 .zl-modal__meta-total dd {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 1.25rem;
 }
 .zl-modal__cta {
@@ -780,8 +783,8 @@
   font-weight: 500;
 }
 .zl-confirm__meta-row--total dd {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 1.35rem;
 }
 .zl-confirm__actions {
@@ -839,18 +842,18 @@
   text-transform: uppercase;
 }
 .zl-auth__wordmark-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
   text-transform: lowercase;
   color: var(--vyral-red);
   letter-spacing: 0;
   margin: 0 1px;
 }
 .zl-auth__wordmark-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
   text-transform: lowercase;
   letter-spacing: 0;
   color: var(--ash);
@@ -905,9 +908,9 @@
   margin: 0;
 }
 .zl-auth__quote em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
   color: var(--vyral-red);
 }
 .zl-auth__hero-foot {
@@ -932,9 +935,9 @@
   font-weight: 500;
 }
 .zl-auth__form-title em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
   color: var(--vyral-red);
 }
 .zl-auth__lead {
@@ -1253,7 +1256,7 @@
   color: var(--ink);
   font-size: 1.25rem;
   font-weight: 500;
-  font-family: 'Instrument Serif', 'Times New Roman', serif;
+  font-family: var(--font-heading);
   letter-spacing: -0.01em;
 }
 
@@ -1391,7 +1394,7 @@
   color: var(--ink);
   font-size: 1.9rem;
   font-weight: 400;
-  font-family: 'Instrument Serif', 'Times New Roman', serif;
+  font-family: var(--font-heading);
   letter-spacing: -0.01em;
 }
 

@@ -6,7 +6,10 @@
       "mcp__playwright__browser_press_key",
       "mcp__playwright__browser_snapshot",
       "WebFetch(domain:alluvi.bz)",
-      "mcp__playwright__browser_run_code_unsafe"
+      "mcp__playwright__browser_run_code_unsafe",
+      "Bash(npm uninstall *)",
+      "mcp__playwright__browser_evaluate",
+      "Bash(npx vite *)"
     ]
   }
 }

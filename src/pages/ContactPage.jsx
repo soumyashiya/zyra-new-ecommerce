@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import { Check } from 'lucide-react'
-import '@fontsource-variable/geist'
 import SiteFooter from '../components/SiteFooter'
 import Seo from '../components/Seo'
 import './ContactPage.css'
 
-import heroImg from '../assets/images/004-best.webp'
+import heroImg from '../assets/new-images/hero.png'
 
 const Arrow = ({ size = 14 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">

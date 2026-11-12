@@ -1,0 +1,511 @@
+- generic [ref=e3]:
+  - link "Skip to main content" [ref=e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - button "Previous announcement" [ref=e8] [cursor=pointer]
+      - generic [ref=e11]:
+        - link "Independently verified ≥99% purity — CoA with every batch" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link [aria-hidden]:
+          - /url: /shipping-policy
+          - text: Order before 3pm for same-day cold-chain dispatch
+        - link [aria-hidden]:
+          - /url: /shipping-policy
+          - text: Complimentary shipping on research orders over $250
+        - link [aria-hidden]:
+          - /url: /contact
+          - text: Questions about a compound? Talk to our lab team
+      - button "Next announcement" [ref=e13] [cursor=pointer]
+    - banner [ref=e16]:
+      - button "Open menu" [ref=e18] [cursor=pointer]
+      - link "Zyra Labs — home" [ref=e20] [cursor=pointer]:
+        - /url: /
+        - generic [aria-hidden] [ref=e21]:
+          - text: zyra
+          - superscript [ref=e22]: ®
+      - generic [ref=e23]:
+        - link "Search products" [ref=e24] [cursor=pointer]:
+          - /url: /services
+        - link "Sign in" [ref=e28] [cursor=pointer]:
+          - /url: /signin
+        - link "Cart, 0 items" [ref=e32] [cursor=pointer]:
+          - /url: /cart
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e41]:
+        - heading "Purity, Proven" [level=1] [ref=e42]
+        - paragraph [ref=e43]: Research peptides at ≥99% purity, with a COA on every batch
+        - link "Shop now" [ref=e45] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=e52]:
+        - link "New product Retatrutide 40mg Our most-requested metabolic research compound. Shop now" [ref=e53] [cursor=pointer]:
+          - /url: /product/retatrutide-40
+          - generic [ref=e54]:
+            - paragraph [ref=e55]: New product
+            - heading "Retatrutide 40mg" [level=2] [ref=e56]
+            - paragraph [ref=e57]: Our most-requested metabolic research compound.
+            - generic [ref=e58]: Shop now
+        - link "Every batch Certificates of analysis HPLC and MS reports, traceable to the batch you hold. How we test" [ref=e63] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: Every batch
+            - heading "Certificates of analysis" [level=2] [ref=e66]
+            - paragraph [ref=e67]: HPLC and MS reports, traceable to the batch you hold.
+            - generic [ref=e68]: How we test
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - link [ref=e76] [cursor=pointer]:
+            - /url: /#testimonials
+            - strong [ref=e88]: (1,200+ reviews)
+          - heading [level=2] [ref=e89]:
+            - text: The home of
+            - emphasis [ref=e90]: verified
+            - text: research compounds
+          - paragraph [ref=e91]: Clean formulations, documented purity, and cold-chain delivery — engineered for structured laboratory work.
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - generic [ref=e94]: LabBench Weekly
+            - paragraph [ref=e95]: “Purity numbers that hold up”
+          - listitem [ref=e96]:
+            - generic [ref=e97]: Peptide Review
+            - paragraph [ref=e98]: “The documentation standard others should meet”
+          - listitem [ref=e99]:
+            - generic [ref=e100]: Applied Research
+            - paragraph [ref=e101]: “Batch-to-batch consistency is exceptional”
+          - listitem [ref=e102]:
+            - generic [ref=e103]: The Synthesis
+            - paragraph [ref=e104]: “Cold-chain handling done properly”
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - heading [level=2] [ref=e108]:
+              - text: Our
+              - emphasis [ref=e109]: bestsellers
+            - paragraph [ref=e110]: Tried. Verified. Reordered again and again.
+          - generic [ref=e111]:
+            - button "Previous product item" [disabled] [ref=e112]
+            - button "Next product item" [ref=e115] [cursor=pointer]
+        - generic [ref=e119]:
+          - article [ref=e120]:
+            - link [aria-hidden] [ref=e121] [cursor=pointer]:
+              - /url: /product/bpc-157-tb-500
+            - generic: Best seller
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - heading [level=3] [ref=e124]:
+                  - link "BPC‑157 & TB‑500 40mg" [ref=e125] [cursor=pointer]:
+                    - /url: /product/bpc-157-tb-500
+                - generic [ref=e126]:
+                  - generic [ref=e127]: From
+                  - strong [ref=e128]: $129.00
+              - generic [ref=e129]: 412 reviews
+              - generic [ref=e142]:
+                - button "Add to Cart" [ref=e143] [cursor=pointer]
+                - button "Save BPC-157 & TB-500 40mg to wishlist" [ref=e146] [cursor=pointer]
+          - article [ref=e149]:
+            - link [aria-hidden] [ref=e150] [cursor=pointer]:
+              - /url: /product/tirzepatide
+            - generic: Best seller
+            - generic [ref=e151]:
+              - generic [ref=e152]:
+                - heading [level=3] [ref=e153]:
+                  - link "Tirzepatide 40mg" [ref=e154] [cursor=pointer]:
+                    - /url: /product/tirzepatide
+                - generic [ref=e155]:
+                  - generic [ref=e156]: From
+                  - strong [ref=e157]: $179.00
+              - generic [ref=e158]: 338 reviews
+              - generic [ref=e171]:
+                - button "Add to Cart" [ref=e172] [cursor=pointer]
+                - button "Save Tirzepatide 40mg to wishlist" [ref=e175] [cursor=pointer]
+          - article [ref=e178]:
+            - link [aria-hidden] [ref=e179] [cursor=pointer]:
+              - /url: /product/mots-c-40
+            - generic: New
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - heading [level=3] [ref=e182]:
+                  - link "MOTS‑C 40mg" [ref=e183] [cursor=pointer]:
+                    - /url: /product/mots-c-40
+                - generic [ref=e184]:
+                  - generic [ref=e185]: From
+                  - strong [ref=e186]: $149.00
+              - generic [ref=e187]: 146 reviews
+              - generic [ref=e200]:
+                - button "Add to Cart" [ref=e201] [cursor=pointer]
+                - button "Save MOTS-C 40mg to wishlist" [ref=e204] [cursor=pointer]
+          - article [ref=e207]:
+            - link [aria-hidden] [ref=e208] [cursor=pointer]:
+              - /url: /product/retatrutide-40
+            - generic: Best seller
+            - generic [ref=e209]:
+              - generic [ref=e210]:
+                - heading [level=3] [ref=e211]:
+                  - link "Retatrutide 40mg" [ref=e212] [cursor=pointer]:
+                    - /url: /product/retatrutide-40
+                - generic [ref=e213]:
+                  - generic [ref=e214]: From
+                  - strong [ref=e215]: $219.00
+              - generic [ref=e216]: 261 reviews
+              - generic [ref=e229]:
+                - button "Add to Cart" [ref=e230] [cursor=pointer]
+                - button "Save Retatrutide 40mg to wishlist" [ref=e233] [cursor=pointer]
+          - article [ref=e236]:
+            - link [aria-hidden] [ref=e237] [cursor=pointer]:
+              - /url: /product/glow
+            - generic: Limited
+            - generic [ref=e238]:
+              - generic [ref=e239]:
+                - heading [level=3] [ref=e240]:
+                  - link "Glow 70mg" [ref=e241] [cursor=pointer]:
+                    - /url: /product/glow
+                - generic [ref=e242]:
+                  - generic [ref=e243]: From
+                  - strong [ref=e244]: $89.00
+              - generic [ref=e245]: 198 reviews
+              - generic [ref=e258]:
+                - button "Add to Cart" [ref=e259] [cursor=pointer]
+                - button "Save Glow 70mg to wishlist" [ref=e262] [cursor=pointer]
+          - article [ref=e265]:
+            - link [aria-hidden] [ref=e266] [cursor=pointer]:
+              - /url: /product/retatrutide-20
+            - generic [ref=e267]:
+              - generic [ref=e268]:
+                - heading [level=3] [ref=e269]:
+                  - link "Retatrutide 20mg" [ref=e270] [cursor=pointer]:
+                    - /url: /product/retatrutide-20
+                - generic [ref=e271]:
+                  - generic [ref=e272]: From
+                  - strong [ref=e273]: $129.00
+              - generic [ref=e274]: 275 reviews
+              - generic [ref=e287]:
+                - button "Add to Cart" [ref=e288] [cursor=pointer]
+                - button "Save Retatrutide 20mg to wishlist" [ref=e291] [cursor=pointer]
+          - article [ref=e294]:
+            - link [aria-hidden] [ref=e295] [cursor=pointer]:
+              - /url: /product/cjc-1295
+            - generic: New
+            - generic [ref=e296]:
+              - generic [ref=e297]:
+                - heading [level=3] [ref=e298]:
+                  - link "CJC‑1295 10mg" [ref=e299] [cursor=pointer]:
+                    - /url: /product/cjc-1295
+                - generic [ref=e300]:
+                  - generic [ref=e301]: From
+                  - strong [ref=e302]: $119.00
+              - generic [ref=e303]: 132 reviews
+              - generic [ref=e316]:
+                - button "Add to Cart" [ref=e317] [cursor=pointer]
+                - button "Save CJC-1295 10mg to wishlist" [ref=e320] [cursor=pointer]
+          - article [ref=e323]:
+            - link [aria-hidden] [ref=e324] [cursor=pointer]:
+              - /url: /product/nad-plus-1000
+            - generic: Limited
+            - generic [ref=e325]:
+              - generic [ref=e326]:
+                - heading [level=3] [ref=e327]:
+                  - link "NAD+ 1,000mg" [ref=e328] [cursor=pointer]:
+                    - /url: /product/nad-plus-1000
+                - generic [ref=e329]:
+                  - generic [ref=e330]: From
+                  - strong [ref=e331]: $139.00
+              - generic [ref=e332]: 224 reviews
+              - generic [ref=e345]:
+                - button "Add to Cart" [ref=e346] [cursor=pointer]
+                - button "Save NAD+ 1,000mg to wishlist" [ref=e349] [cursor=pointer]
+          - article [ref=e352]:
+            - link [aria-hidden] [ref=e353] [cursor=pointer]:
+              - /url: /product/tesamorelin-20
+            - generic: New
+            - generic [ref=e354]:
+              - generic [ref=e355]:
+                - heading [level=3] [ref=e356]:
+                  - link "Tesamorelin 20mg" [ref=e357] [cursor=pointer]:
+                    - /url: /product/tesamorelin-20
+                - generic [ref=e358]:
+                  - generic [ref=e359]: From
+                  - strong [ref=e360]: $159.00
+              - generic [ref=e361]: 158 reviews
+              - generic [ref=e374]:
+                - button "Add to Cart" [ref=e375] [cursor=pointer]
+                - button "Save Tesamorelin 20mg to wishlist" [ref=e378] [cursor=pointer]
+      - generic [ref=e382]:
+        - heading "Trusted in…" [level=2] [ref=e383]
+        - list [ref=e384]:
+          - listitem [ref=e385]:
+            - generic "Northfield Institute" [ref=e386]: NORTHFIELD INSTITUTE
+          - listitem [ref=e391]:
+            - generic [ref=e392]: Camden Biolab
+          - listitem [ref=e393]:
+            - generic "Helix Research" [ref=e394]:
+              - generic [ref=e395]: HELIX
+              - generic [ref=e396]: RESEARCH
+          - listitem [ref=e397]:
+            - generic [ref=e398]:
+              - text: ORRIN
+              - emphasis [ref=e399]: UNIVERSITY
+          - listitem [ref=e400]:
+            - generic [ref=e401]: WestgateAnalytics
+          - listitem [ref=e402]:
+            - generic [ref=e403]: Meridian Labs
+      - generic [ref=e407]:
+        - blockquote [ref=e408]: “We compared four suppliers over six months. Zyra Labs was the only one whose purity numbers held up under independent retesting.”
+        - paragraph [ref=e409]: — James Whitford, Lab Director
+        - link "See the data" [ref=e410] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e415]:
+        - generic [ref=e416]:
+          - generic [ref=e417]:
+            - heading "Shop by research area" [level=2] [ref=e418]
+            - paragraph [ref=e419]: Targeted compounds, grouped the way labs actually order them.
+          - generic [ref=e420]:
+            - button "Previous collection item" [disabled] [ref=e421]
+            - button "Next collection item" [ref=e424] [cursor=pointer]
+        - generic [ref=e428]:
+          - link [ref=e429] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e431]:
+              - heading "Repair & recovery" [level=3] [ref=e432]
+              - paragraph [ref=e433]: BPC-157, TB-500 and regenerative blends
+          - link [ref=e436] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e438]:
+              - heading "Metabolic research" [level=3] [ref=e439]
+              - paragraph [ref=e440]: Tirzepatide and retatrutide, multiple strengths
+          - link [ref=e443] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e445]:
+              - heading "Longevity & cellular" [level=3] [ref=e446]
+              - paragraph [ref=e447]: NAD+ and mitochondrial research compounds
+          - link [ref=e450] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e452]:
+              - heading "Dermal & aesthetic" [level=3] [ref=e453]
+              - paragraph [ref=e454]: Glow and skin-directed formulations
+          - link [ref=e457] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e459]:
+              - heading "Pre-filled devices" [level=3] [ref=e460]
+              - paragraph [ref=e461]: Fixed-volume, sealed, ready for the bench
+      - generic [ref=e468]:
+        - heading [level=2] [ref=e469]:
+          - text: About
+          - emphasis [ref=e470]: us
+        - paragraph [ref=e471]: "Zyra Labs is committed to advancing high-quality peptide and research compound production through clean, reliable and precisely developed formulations. Our goal is simple: controlled, consistent research materials engineered for structured laboratory applications."
+        - paragraph [ref=e472]: Every compound we ship is independently assayed, batch-numbered and documented, so the material on your bench matches the paperwork in your file — down to the decimal place.
+        - generic [ref=e473]:
+          - generic [ref=e474]:
+            - strong [ref=e475]: 10k+
+            - generic [ref=e476]: researchers served
+          - generic [ref=e477]:
+            - strong [ref=e478]: 99%
+            - generic [ref=e479]: verified purity
+          - generic [ref=e480]:
+            - strong [ref=e481]: 24h
+            - generic [ref=e482]: support response
+        - link "Read our standards" [ref=e484] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e492]:
+        - heading [level=2] [ref=e493]:
+          - text: Six reasonslabs
+          - emphasis [ref=e494]: stay
+        - paragraph [ref=e495]: The standards behind every product we ship — from the first assay to the box that lands on your bench.
+        - list [ref=e496]:
+          - listitem [ref=e497]:
+            - generic [ref=e501]:
+              - heading "Purity first" [level=3] [ref=e502]
+              - paragraph [ref=e503]: Every batch is checked thoroughly to maintain clean, high-quality formulations.
+          - listitem [ref=e504]:
+            - generic [ref=e510]:
+              - heading "Reliable consistency" [level=3] [ref=e511]
+              - paragraph [ref=e512]: Uniform production standards mean every batch performs the same.
+          - listitem [ref=e513]:
+            - generic [ref=e520]:
+              - heading "Secure packaging" [level=3] [ref=e521]
+              - paragraph [ref=e522]: Sealed and protected so products arrive intact, stable and bench-ready.
+          - listitem [ref=e523]:
+            - generic [ref=e529]:
+              - heading "Verified documentation" [level=3] [ref=e530]
+              - paragraph [ref=e531]: Strict testing and clear paperwork back every order, production to delivery.
+          - listitem [ref=e532]:
+            - generic [ref=e536]:
+              - heading "Quick email support" [level=3] [ref=e537]
+              - paragraph [ref=e538]: Fast, direct assistance from real people who know the chemistry.
+          - listitem [ref=e539]:
+            - generic [ref=e546]:
+              - heading "Trusted by thousands" [level=3] [ref=e547]
+              - paragraph [ref=e548]: Researchers and laboratories worldwide choose Zyra Labs batch after batch.
+      - generic [ref=e558]:
+        - paragraph [ref=e559]: From the bench
+        - blockquote [ref=e560]: “Documentation and traceability are flawless.”
+        - paragraph [ref=e561]:
+          - text: I trust their batches the way I trust my own bench notes.
+          - generic [ref=e562]: — Aisha Khan, Analytical Chemist
+        - link "Request a CoA" [ref=e563] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e570]:
+        - heading "10,000+ researchers served" [level=2] [ref=e571]:
+          - generic [ref=e572]: 10,000+
+          - generic [ref=e573]: researchers served
+        - blockquote [ref=e574]:
+          - generic [ref=e575]: Emily C.
+          - paragraph [ref=e576]: Fast support and remarkably consistent products. Zyra Labs has become our go-to source for research-grade peptides.
+        - blockquote [ref=e577]:
+          - generic [ref=e578]: Sofia B.
+          - paragraph [ref=e579]: Secure delivery, excellent communication, and a team that genuinely understands what reliability means in this field.
+        - blockquote [ref=e580]:
+          - generic [ref=e581]: Michael R.
+          - paragraph [ref=e582]: The consistency across batches is what keeps me coming back. Helpful guidance and a smooth ordering experience throughout.
+        - blockquote [ref=e583]:
+          - generic [ref=e584]: Aisha K.
+          - paragraph [ref=e585]: Documentation and traceability are flawless. I trust their batches the way I trust my own bench notes.
+        - blockquote [ref=e586]:
+          - generic [ref=e587]: James W.
+          - paragraph [ref=e588]: We compared four suppliers over six months. Zyra Labs was the only one whose purity numbers held up under independent retesting.
+      - generic [ref=e590]:
+        - heading "Join the Zyra community" [level=2] [ref=e591]
+        - paragraph [ref=e592]: and be first to hear about new batches
+        - paragraph [ref=e593]: Early access to new compounds, CoAs as soon as they land, and notes from the lab team.
+        - paragraph [ref=e594]: Sign up & stay ahead…
+        - generic [ref=e595]:
+          - generic [ref=e596]: Email address
+          - textbox "Email address" [ref=e597]:
+            - /placeholder: Enter your email
+          - button "Subscribe" [ref=e598] [cursor=pointer]
+      - region "Our promises" [ref=e601]:
+        - list [ref=e603]:
+          - listitem [ref=e604]:
+            - generic [ref=e608]:
+              - paragraph [ref=e609]: ≥99% verified purity
+              - paragraph [ref=e610]: HPLC tested, CoA on request
+          - listitem [ref=e611]:
+            - generic [ref=e625]:
+              - paragraph [ref=e626]: Cold-chain shipping
+              - paragraph [ref=e627]: Temperature-controlled, tracked
+          - listitem [ref=e628]:
+            - generic [ref=e634]:
+              - paragraph [ref=e635]: Free over $250
+              - paragraph [ref=e636]: Same-day dispatch before 3pm
+          - listitem [ref=e637]:
+            - generic [ref=e640]:
+              - paragraph [ref=e641]: Research-grade only
+              - paragraph [ref=e642]: Not for human consumption
+      - generic "Site footer" [ref=e643]:
+        - generic [ref=e645]:
+          - navigation "Footer" [ref=e646]:
+            - generic [ref=e647]:
+              - heading "Our products" [level=4] [ref=e648]
+              - list [ref=e649]:
+                - listitem [ref=e650]:
+                  - link "All compounds" [ref=e651] [cursor=pointer]:
+                    - /url: /services
+                - listitem [ref=e652]:
+                  - link "Retatrutide" [ref=e653] [cursor=pointer]:
+                    - /url: /product/retatrutide-40
+                - listitem [ref=e654]:
+                  - link "Tirzepatide" [ref=e655] [cursor=pointer]:
+                    - /url: /product/tirzepatide
+                - listitem [ref=e656]:
+                  - link "BPC-157 & TB-500" [ref=e657] [cursor=pointer]:
+                    - /url: /product/bpc-157-tb-500
+                - listitem [ref=e658]:
+                  - link "NAD+" [ref=e659] [cursor=pointer]:
+                    - /url: /product/nad-plus-1000
+            - generic [ref=e660]:
+              - heading "Learn" [level=4] [ref=e661]
+              - list [ref=e662]:
+                - listitem [ref=e663]:
+                  - link "About Zyra Labs" [ref=e664] [cursor=pointer]:
+                    - /url: /about
+                - listitem [ref=e665]:
+                  - link "Press releases" [ref=e666] [cursor=pointer]:
+                    - /url: /press-release
+                - listitem [ref=e667]:
+                  - link "Request a CoA" [ref=e668] [cursor=pointer]:
+                    - /url: /contact
+                - listitem [ref=e669]:
+                  - link "Specs & purity" [ref=e670] [cursor=pointer]:
+                    - /url: /services
+                - listitem [ref=e671]:
+                  - link "Cold-chain handling" [ref=e672] [cursor=pointer]:
+                    - /url: /shipping-policy
+            - generic [ref=e673]:
+              - heading "Help" [level=4] [ref=e674]
+              - list [ref=e675]:
+                - listitem [ref=e676]:
+                  - link "My account" [ref=e677] [cursor=pointer]:
+                    - /url: /signin
+                - listitem [ref=e678]:
+                  - link "My orders" [ref=e679] [cursor=pointer]:
+                    - /url: /orders
+                - listitem [ref=e680]:
+                  - link "Track order" [ref=e681] [cursor=pointer]:
+                    - /url: /track-order
+                - listitem [ref=e682]:
+                  - link "Contact us" [ref=e683] [cursor=pointer]:
+                    - /url: /contact
+                - listitem [ref=e684]:
+                  - link "Returns" [ref=e685] [cursor=pointer]:
+                    - /url: /refund-policy
+          - generic [ref=e686]:
+            - heading "Stay in the loop" [level=3] [ref=e687]
+            - generic [ref=e688]:
+              - generic [ref=e689]:
+                - textbox "Email address" [ref=e690]:
+                  - /placeholder: Enter your email
+                - button "Subscribe" [ref=e691] [cursor=pointer]
+              - generic [ref=e694] [cursor=pointer]:
+                - checkbox "I agree to receive lab updates and batch drops. Unsubscribe anytime." [checked] [ref=e695]
+                - generic [ref=e696]: I agree to receive lab updates and batch drops. Unsubscribe anytime.
+            - paragraph [ref=e697]: CoAs, batch drops and lab notes — no more than once a month.
+            - list [ref=e698]:
+              - listitem [ref=e699]:
+                - link "Instagram" [ref=e700] [cursor=pointer]:
+                  - /url: https://instagram.com/zyralabs
+              - listitem [ref=e705]:
+                - link "X (Twitter)" [ref=e706] [cursor=pointer]:
+                  - /url: https://twitter.com/zyralabs
+              - listitem [ref=e709]:
+                - link "YouTube" [ref=e710] [cursor=pointer]:
+                  - /url: https://youtube.com/@zyralabs
+              - listitem [ref=e714]:
+                - link "LinkedIn" [ref=e715] [cursor=pointer]:
+                  - /url: https://linkedin.com/company/zyralabs
+        - generic [ref=e720]:
+          - generic [aria-hidden] [ref=e721]:
+            - generic [ref=e722]: Independently verified
+            - generic [ref=e724]: HPLC & MS tested
+            - generic [ref=e726]: Batch-traceable
+            - generic [ref=e728]: Cold-chain handled
+            - generic [ref=e730]: CoA with every order
+          - generic [aria-hidden] [ref=e732]:
+            - generic [ref=e733]: Independently verified
+            - generic [ref=e735]: HPLC & MS tested
+            - generic [ref=e737]: Batch-traceable
+            - generic [ref=e739]: Cold-chain handled
+            - generic [ref=e741]: CoA with every order
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - generic [ref=e746]: © 2026 Zyra Labs. All rights reserved.
+            - list [ref=e747]:
+              - listitem [ref=e748]:
+                - link "Refund policy" [ref=e749] [cursor=pointer]:
+                  - /url: /refund-policy
+              - listitem [ref=e750]:
+                - link "Privacy policy" [ref=e751] [cursor=pointer]:
+                  - /url: /privacy-policy
+              - listitem [ref=e752]:
+                - link "Terms of service" [ref=e753] [cursor=pointer]:
+                  - /url: /terms-of-service
+              - listitem [ref=e754]:
+                - link "Shipping policy" [ref=e755] [cursor=pointer]:
+                  - /url: /shipping-policy
+          - list "Accepted payment methods" [ref=e756]:
+            - listitem [ref=e757]: Visa
+            - listitem [ref=e758]: Mastercard
+            - listitem [ref=e759]: Amex
+            - listitem [ref=e760]: Discover
+            - listitem [ref=e761]: PayPal
+            - listitem [ref=e762]: Apple Pay
+            - listitem [ref=e763]: Google Pay

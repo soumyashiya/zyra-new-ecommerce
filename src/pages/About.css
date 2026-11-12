@@ -1,39 +1,41 @@
-/* =========================================================================
+﻿/* =========================================================================
    Zyra Labs — About page
    Fully scoped under .zl-about / .zl-page. Reuses the tokens established in
    Deals.css so the whole marketing site shares one visual language.
    ========================================================================= */
 
+/* The legacy token names are kept so the rest of this file (and the Contact,
+   Services and Legal stylesheets that share this scope) keep working — each
+   one now resolves to the site design system instead of its own palette. */
 .zl-page {
-  --cream:        #F4F2EC;
-  --paper:        #FFFFFF;
-  --bone:         #E8E5DC;
-  --hover-cream:  #E0DCD0;
-  --ash:          #6C6C6C;
-  --mute:         #B4B4B0;
-  --ink:          #0E0E0E;
-  --dark-bg:      #131313;
-  --dark-bg-2:    #0B0B0B;
-  --vyral-red:    #E5462B;
-  --vyral-red-hover: #C9381F;
+  --cream:        var(--color-bg-alt);
+  --paper:        var(--color-bg);
+  --bone:         rgb(var(--c-text) / 0.12);
+  --hover-cream:  rgb(var(--c-text) / 0.06);
+  --ash:          var(--color-muted);
+  --mute:         var(--color-faint);
+  --ink:          var(--color-text);
+  --dark-bg:      rgb(var(--c-text));
+  --dark-bg-2:    rgb(var(--c-text) / 0.92);
+  --vyral-red:    var(--color-accent);
+  --vyral-red-hover: #c9480b;
 
-  --line-on-cream: rgba(14, 14, 14, 0.10);
-  --line-on-ink:   rgba(244, 242, 236, 0.10);
-  --line-strong:   rgba(14, 14, 14, 0.22);
+  --line-on-cream: var(--color-border);
+  --line-on-ink:   rgb(255 255 255 / 0.14);
+  --line-strong:   rgb(var(--c-text) / 0.22);
 
-  --font-sans:  "Geist Variable", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Instrument Serif", "Times New Roman", Times, serif;
+  --font-sans:  var(--font-body);
+  --font-serif: var(--font-heading);
 
-  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-base:   220ms;
-  --dur-slow:   560ms;
+  --ease-out:   var(--curve-primary);
+  --ease-inout: var(--curve-smooth);
+  --dur-base:   300ms;
+  --dur-slow:   700ms;
 
   position: relative;
-  margin-top: calc(-1 * var(--header-offset));
   min-height: 100vh;
   overflow-x: clip;
-  background: var(--cream);
+  background: var(--color-bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -44,13 +46,46 @@
 
 .zl-page * { box-sizing: border-box; }
 
-.zl-page h1, .zl-page h2, .zl-page h3, .zl-page h4 { margin: 0; letter-spacing: -0.025em; font-weight: 500; }
-.zl-page p { margin: 0; color: rgba(14,14,14,0.66); }
+.zl-page h1, .zl-page h2, .zl-page h3, .zl-page h4 {
+  margin: 0;
+  letter-spacing: var(--heading-letter-spacing);
+  font-weight: var(--font-bold);
+}
+
+.zl-page p { margin: 0; color: var(--color-muted); }
+
+/* Emphasis is no longer a serif italic — it takes the peach underline the
+   rest of the site uses to mark a word inside a heading. */
+.zl-page h1 em,
+.zl-page h2 em,
+.zl-page h3 em {
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  position: relative;
+  display: inline-block;
+}
+
+.zl-page h1 em::after,
+.zl-page h2 em::after,
+.zl-page h3 em::after {
+  content: '';
+  position: absolute;
+  inset-inline: -0.08em;
+  bottom: -0.16em;
+  height: 0.22em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M4 11.5C42 4.2 92 2.8 152 6.2c17 1 32 3.1 44 5.6' stroke='%23FFD1BA' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
 .zl-page em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: var(--font-bold);
   color: var(--ink);
 }
 
@@ -104,17 +139,27 @@
    Banner — Deals-style hero (blurred bg, mono labels, huge bottom title)
    Shared by About + Services pages via the single bundled stylesheet.
    ========================================================================= */
-.zl-banner {
+/* An inset, rounded media card — the same hero silhouette the home page
+   uses — rather than a full-viewport bleed. */
+:is(.zl-about-banner, .zl-services-banner) {
   position: relative;
-  height: 100svh;
-  min-height: 100svh;
-  padding: 0;
-  display: block;
+  width: var(--page-container);
+  margin: var(--sp-4) auto 0;
+  aspect-ratio: 16 / 6;
+  min-height: 330px;
+  display: grid;
+  place-items: center;
   overflow: hidden;
-  background: #0a0a0a;
+  border-radius: var(--radius-block);
+  background: rgb(var(--c-text));
   isolation: isolate;
 }
-.zl-banner__bg {
+/* About banner runs nearly edge to edge, matching the home hero's .hm-wide. */
+.zl-banner:is(.zl-about-banner, .zl-services-banner) {
+  width: calc(100% - clamp(1.5rem, 1.4vw, 1.75rem));
+  margin-top: var(--sp-3);
+}
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__bg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -122,78 +167,81 @@
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 0;
-  filter: brightness(0.78) saturate(0.95);
   animation: zl-banner-bg-in 1600ms var(--ease-out) both;
 }
-.zl-banner__scrim {
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__scrim {
   position: absolute;
   inset: 0;
+  /* The title sits mid-card over the brightest part of most of these
+     photographs, so the scrim stays heavy through the middle band. */
   background:
-    radial-gradient(1200px 700px at 50% 100%, rgba(229,70,43,0.24), transparent 70%),
-    linear-gradient(180deg, rgba(11,11,11,0.30) 0%, rgba(11,11,11,0.55) 60%, rgba(11,11,11,0.85) 100%);
+    linear-gradient(to top, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0.3) 50%, rgb(0 0 0 / 0.42) 100%),
+    radial-gradient(70% 55% at 50% 52%, rgb(0 0 0 / 0.5), transparent 75%);
   z-index: 1;
   pointer-events: none;
 }
 
-.zl-banner__labels {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
+/* The three standfirst words read as one spaced eyebrow above the title. */
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__labels {
+  position: relative;
   z-index: 2;
+  grid-area: 1 / 1;
+  align-self: center;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding: 0 clamp(20px, 5vw, 64px);
+  gap: var(--sp-3) var(--sp-6);
+  width: 100%;
+  padding: 0 var(--sp-6);
+  margin-bottom: clamp(7rem, 15vw, 11rem);
   pointer-events: none;
 }
-.zl-banner__labels span {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.15em;
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__labels span {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: rgb(255 255 255 / 0.92);
   opacity: 0;
   animation: zl-banner-fade-up 600ms var(--ease-out) forwards;
 }
-.zl-banner__labels span:nth-child(1) { animation-delay: 200ms; }
-.zl-banner__labels span:nth-child(2) { animation-delay: 300ms; }
-.zl-banner__labels span:nth-child(3) { animation-delay: 400ms; }
-.zl-banner__labels span:nth-child(4) { animation-delay: 500ms; }
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__labels span:nth-child(1) { animation-delay: 200ms; }
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__labels span:nth-child(2) { animation-delay: 300ms; }
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__labels span:nth-child(3) { animation-delay: 400ms; }
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__labels span:nth-child(4) { animation-delay: 500ms; }
 
-.zl-banner__title {
-  position: absolute;
-  left: 50%;
-  bottom: 40px;
-  transform: translateX(-50%);
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__title {
+  position: relative;
   z-index: 3;
-  white-space: nowrap;
-  font-family: var(--font-sans);
-  font-size: clamp(180px, 22vw, 360px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 0.85;
+  grid-area: 1 / 1;
+  align-self: center;
+  margin: clamp(3.5rem, 8vw, 6rem) 0 0;
+  padding-inline: var(--sp-6);
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 6vw, 7.5rem);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.04em;
+  line-height: 1;
   color: #fff;
-  margin: 0;
   pointer-events: none;
 }
-.zl-banner__title-letter {
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__title-letter {
   display: inline-block;
   opacity: 0;
   transform: translateY(0.6em);
   animation: zl-banner-letter 900ms var(--ease-out) both;
   will-change: transform, opacity;
 }
-.zl-banner__title-sub {
+:is(.zl-about-banner, .zl-services-banner) .zl-banner__title-sub {
   display: inline-block;
-  margin-left: 0.2em;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 0.3em;
-  letter-spacing: 0.01em;
+  margin-left: 0.14em;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.72em;
+  letter-spacing: -0.03em;
   text-transform: lowercase;
   color: var(--vyral-red);
   vertical-align: baseline;
@@ -215,41 +263,28 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 1024px) {
-  .zl-banner__title { font-size: clamp(140px, 25vw, 240px); }
-}
-@media (max-width: 768px) {
-  .zl-banner__labels {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px 16px;
-    top: 42%;
+@media (max-width: 749px) {
+  :is(.zl-about-banner, .zl-services-banner) {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
   }
-  .zl-banner__labels span { font-size: 10px; letter-spacing: 0.1em; }
-  .zl-banner__title { font-size: clamp(104px, 26vw, 210px); bottom: 32px; }
-}
-@media (max-width: 600px) {
-  .zl-banner__title { font-size: clamp(90px, 25vw, 170px); bottom: 28px; }
-}
-@media (max-width: 480px) {
-  .zl-banner__title { font-size: clamp(78px, 24vw, 140px); bottom: 24px; }
-  .zl-banner__labels span { font-size: 9px; letter-spacing: 0.08em; }
-}
-@media (max-width: 430px) {
-  .zl-banner__title { font-size: clamp(72px, 24vw, 120px); letter-spacing: -0.03em; bottom: 22px; }
-}
-@media (max-width: 375px) {
-  .zl-banner__title { font-size: clamp(62px, 22vw, 100px); }
-  .zl-banner__labels span { font-size: 8px; letter-spacing: 0.06em; }
-}
-@media (max-width: 320px) {
-  .zl-banner__title { font-size: clamp(54px, 21vw, 84px); bottom: 18px; }
+  :is(.zl-about-banner, .zl-services-banner) .zl-banner__labels {
+    gap: var(--sp-2) var(--sp-4);
+    margin-bottom: clamp(5rem, 24vw, 8rem);
+  }
+  :is(.zl-about-banner, .zl-services-banner) .zl-banner__labels span {
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+  }
+  :is(.zl-about-banner, .zl-services-banner) .zl-banner__title {
+    margin-top: clamp(2.5rem, 12vw, 4rem);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .zl-banner__bg,
-  .zl-banner__labels span,
-  .zl-banner__title-letter,
-  .zl-banner__title-sub {
+  :is(.zl-about-banner, .zl-services-banner) .zl-banner__bg,
+  :is(.zl-about-banner, .zl-services-banner) .zl-banner__labels span,
+  :is(.zl-about-banner, .zl-services-banner) .zl-banner__title-letter,
+  :is(.zl-about-banner, .zl-services-banner) .zl-banner__title-sub {
     animation: none;
     opacity: 1;
     transform: none;
@@ -344,9 +379,9 @@
   max-width: 15ch;
 }
 .zl-hero__title em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
   color: var(--cream);
   letter-spacing: -0.01em;
 }
@@ -386,6 +421,19 @@
   max-width: 1240px;
   margin: 0 auto;
 }
+/* About page runs tighter: ~160px between sections on desktop instead of
+   ~256px, with headings closer to their content. */
+.zl-about .zl-mission,
+.zl-about .zl-story,
+.zl-about .zl-values,
+.zl-about .zl-team {
+  padding-top: clamp(48px, 5.5vw, 80px);
+  padding-bottom: clamp(48px, 5.5vw, 80px);
+}
+.zl-about .zl-story__head { margin-bottom: 44px; }
+.zl-about .zl-values__head,
+.zl-about .zl-team__head { margin-bottom: 40px; }
+
 .zl-mission__label, .zl-story__label, .zl-values__label, .zl-team__label {
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -480,8 +528,8 @@
   box-shadow: 0 20px 60px -20px rgba(14,14,14,0.35);
 }
 .zl-mission__badge-num {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 1.3rem;
   line-height: 1;
   color: var(--vyral-red);
@@ -592,8 +640,8 @@
 }
 .zl-story__step:last-child { border-bottom: 0; }
 .zl-story__year {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 2rem;
   color: rgba(244,242,236,0.85);
 }
@@ -825,7 +873,10 @@
 
 @media (max-width: 430px) {
   .zl-mission, .zl-values, .zl-team, .zl-cta-band { padding-left: 16px; padding-right: 16px; }
-  .zl-team__grid { grid-template-columns: 1fr; }
+  /* Two portraits per row on phones, a single column made each one nearly
+     a full screen tall. */
+  .zl-team__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .zl-team-card { gap: 10px; }
   .zl-mission__point { grid-template-columns: 48px 1fr; gap: 14px; }
   /* Stack timeline steps onto a single rail so wide years never collide */
   .zl-story__step { grid-template-columns: 1fr; gap: 6px; padding: 22px 0 22px 26px; }

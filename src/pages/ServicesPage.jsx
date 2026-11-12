@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import Lenis from 'lenis'
-import '@fontsource-variable/geist'
 import SiteFooter from '../components/SiteFooter'
 import Seo from '../components/Seo'
+/* The page builds on the shared .zl-page tokens, buttons, reveal, banner and
+   CTA band in About.css. Import it directly: relying on another page having
+   loaded it first left this page unstyled on a direct visit. */
+import './About.css'
 import './ServicesPage.css'
-import { products as catalogProducts } from './dealsProducts'
+import { products as catalogProducts, RESEARCH_AREAS } from './dealsProducts'
 
-import heroImg from '../assets/images/004-best.webp'
+import heroImg from '../assets/new-images/hero.png'
 import processImg from '../assets/images/product-show2.jpeg'
 
 const Arrow = ({ size = 14 }) => (
@@ -90,23 +93,48 @@ const Process = () => {
 }
 
 /* ---------- Catalogue — product card grid ---------- */
-const Catalogue = () => (
+/* `?area=<id>` narrows the grid to one research area — the header mega-menu
+   cards link straight here. An unknown or absent id shows everything. */
+const Catalogue = () => {
+  const [params] = useSearchParams()
+  const areaId = params.get('area')
+  const area = RESEARCH_AREAS.find((a) => a.id === areaId)
+  const items = area ? catalogProducts.filter((p) => p.area === area.id) : catalogProducts
+
+  return (
   <section className="zl-catalog">
     <div className="zl-catalog__head" data-reveal>
       <div className="zl-eyebrow">( 01 ) catalogue</div>
-      <h2>Stock <em>peptides</em> ready for research.</h2>
-      <p>A snapshot of what&apos;s on the shelf right now. Every listing includes a CoA on request.</p>
+      {area ? (
+        <>
+          <h2>{area.label}</h2>
+          <p>
+            {items.length} {items.length === 1 ? 'compound' : 'compounds'} in this research area.
+            Every listing includes a CoA on request. <Link to="/services">View the full catalogue</Link>
+          </p>
+        </>
+      ) : (
+        <>
+          <h2>Stock <em>peptides</em> ready for research.</h2>
+          <p>A snapshot of what&apos;s on the shelf right now. Every listing includes a CoA on request.</p>
+        </>
+      )}
     </div>
 
     <div className="zl-catalog__grid">
-      {catalogProducts.map((it, i) => (
+      {items.map((it, i) => (
         <article
           key={it.id}
           className="zl-pcard"
           data-reveal
           style={{ '--reveal-delay': `${i * 90}ms` }}
         >
-          <Link to={`/product/${it.id}`} className="zl-pcard__media" aria-label={`Open ${it.title}`}>
+          <Link
+            to={`/product/${it.id}`}
+            className={`zl-pcard__media${it.bg ? ' zl-pcard__media--tint' : ''}`}
+            aria-label={`Open ${it.title}`}
+            style={it.bg ? { background: it.bg } : undefined}
+          >
             <img src={it.image} alt={it.title} loading="lazy" />
             <span className="zl-pcard__badge">/{String(i + 1).padStart(2, '0')}</span>
             <span className="zl-pcard__wl" aria-hidden="true">In stock</span>
@@ -132,7 +160,8 @@ const Catalogue = () => (
       ))}
     </div>
   </section>
-)
+  )
+}
 
 /* ---------- FAQ ---------- */
 const faqs = [

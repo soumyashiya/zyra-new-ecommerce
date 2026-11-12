@@ -1,4 +1,4 @@
-/* =========================================================================
+﻿/* =========================================================================
    Zyra Labs — Contact page
    Scoped under .zl-contact. Defines its own copy of the shared tokens,
    banner, eyebrow & button styles (same pattern as About.css / Cart.css /
@@ -7,27 +7,26 @@
    ========================================================================= */
 
 .zl-contact {
-  --cream:        #F4F2EC;
-  --paper:        #FFFFFF;
-  --bone:         #E8E5DC;
-  --ash:          #6C6C6C;
-  --ink:          #0E0E0E;
-  --vyral-red:    #E5462B;
-  --vyral-red-hover: #C9381F;
+  --cream:        var(--color-bg-alt);
+  --paper:        var(--color-bg);
+  --bone:         rgb(var(--c-text) / 0.12);
+  --ash:          var(--color-muted);
+  --ink:          var(--color-text);
+  --vyral-red:    var(--color-accent);
+  --vyral-red-hover: #c9480b;
 
-  --line-on-cream: rgba(14, 14, 14, 0.10);
+  --line-on-cream: var(--color-border);
 
-  --font-sans:  "Geist Variable", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Instrument Serif", "Times New Roman", Times, serif;
+  --font-sans:  var(--font-body);
+  --font-serif: var(--font-heading);
 
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-base: 220ms;
+  --ease-out: var(--curve-primary);
+  --dur-base: 300ms;
 
   position: relative;
-  margin-top: calc(-1 * var(--header-offset));
   min-height: 100vh;
   overflow-x: clip;
-  background: var(--cream);
+  background: var(--color-bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -36,15 +35,12 @@
   text-rendering: optimizeLegibility;
 }
 .zl-contact * { box-sizing: border-box; }
-.zl-contact h1, .zl-contact h2, .zl-contact h3, .zl-contact h4 { margin: 0; letter-spacing: -0.025em; font-weight: 500; }
-.zl-contact p { margin: 0; color: rgba(14,14,14,0.66); }
-.zl-contact em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--ink);
+.zl-contact h1, .zl-contact h2, .zl-contact h3, .zl-contact h4 {
+  margin: 0;
+  letter-spacing: var(--heading-letter-spacing);
+  font-weight: var(--font-bold);
 }
+.zl-contact p { margin: 0; color: var(--color-muted); }
 
 /* ---------- Reveal ---------- */
 .zl-reveal-pre {
@@ -93,17 +89,17 @@
 /* =========================================================================
    Banner — hero (blurred bg, mono labels, huge bottom title)
    ========================================================================= */
-.zl-banner {
+.zl-contact-banner {
   position: relative;
-  height: 100svh;
-  min-height: 100svh;
+  height: 86svh;
+  min-height: 86svh;
   padding: 0;
   display: block;
   overflow: hidden;
   background: #0a0a0a;
   isolation: isolate;
 }
-.zl-banner__bg {
+.zl-contact-banner .zl-banner__bg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -114,7 +110,7 @@
   filter: brightness(0.78) saturate(0.95);
   animation: zl-banner-bg-in 1600ms var(--ease-out) both;
 }
-.zl-banner__scrim {
+.zl-contact-banner .zl-banner__scrim {
   position: absolute;
   inset: 0;
   background:
@@ -123,7 +119,7 @@
   z-index: 1;
   pointer-events: none;
 }
-.zl-banner__labels {
+.zl-contact-banner .zl-banner__labels {
   position: absolute;
   top: 50%;
   left: 0;
@@ -136,7 +132,7 @@
   padding: 0 clamp(20px, 5vw, 64px);
   pointer-events: none;
 }
-.zl-banner__labels span {
+.zl-contact-banner .zl-banner__labels span {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
   font-weight: 400;
@@ -146,11 +142,11 @@
   opacity: 0;
   animation: zl-banner-fade-up 600ms var(--ease-out) forwards;
 }
-.zl-banner__labels span:nth-child(1) { animation-delay: 200ms; }
-.zl-banner__labels span:nth-child(2) { animation-delay: 300ms; }
-.zl-banner__labels span:nth-child(3) { animation-delay: 400ms; }
-.zl-banner__labels span:nth-child(4) { animation-delay: 500ms; }
-.zl-banner__title {
+.zl-contact-banner .zl-banner__labels span:nth-child(1) { animation-delay: 200ms; }
+.zl-contact-banner .zl-banner__labels span:nth-child(2) { animation-delay: 300ms; }
+.zl-contact-banner .zl-banner__labels span:nth-child(3) { animation-delay: 400ms; }
+.zl-contact-banner .zl-banner__labels span:nth-child(4) { animation-delay: 500ms; }
+.zl-contact-banner .zl-banner__title {
   position: absolute;
   left: 50%;
   bottom: 40px;
@@ -166,19 +162,19 @@
   margin: 0;
   pointer-events: none;
 }
-.zl-banner__title-letter {
+.zl-contact-banner .zl-banner__title-letter {
   display: inline-block;
   opacity: 0;
   transform: translateY(0.6em);
   animation: zl-banner-letter 900ms var(--ease-out) both;
   will-change: transform, opacity;
 }
-.zl-banner__title-sub {
+.zl-contact-banner .zl-banner__title-sub {
   display: inline-block;
   margin-left: 0.2em;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 700;
   font-size: 0.3em;
   letter-spacing: 0.01em;
   text-transform: lowercase;
@@ -201,43 +197,98 @@
   to { opacity: 1; transform: translateY(0); }
 }
 @media (max-width: 1024px) {
-  .zl-banner__title { font-size: clamp(140px, 25vw, 240px); }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(140px, 25vw, 240px); }
 }
 @media (max-width: 768px) {
-  .zl-banner__labels {
+  .zl-contact-banner .zl-banner__labels {
     flex-wrap: wrap;
     justify-content: center;
     gap: 6px 16px;
     top: 42%;
   }
-  .zl-banner__labels span { font-size: 10px; letter-spacing: 0.1em; }
-  .zl-banner__title { font-size: clamp(104px, 26vw, 210px); bottom: 32px; }
+  .zl-contact-banner .zl-banner__labels span { font-size: 10px; letter-spacing: 0.1em; }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(104px, 26vw, 210px); bottom: 32px; }
 }
 @media (max-width: 600px) {
-  .zl-banner__title { font-size: clamp(90px, 25vw, 170px); bottom: 28px; }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(90px, 25vw, 170px); bottom: 28px; }
 }
 @media (max-width: 480px) {
-  .zl-banner__title { font-size: clamp(78px, 24vw, 140px); bottom: 24px; }
-  .zl-banner__labels span { font-size: 9px; letter-spacing: 0.08em; }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(78px, 24vw, 140px); bottom: 24px; }
+  .zl-contact-banner .zl-banner__labels span { font-size: 9px; letter-spacing: 0.08em; }
 }
 @media (max-width: 430px) {
-  .zl-banner__title { font-size: clamp(72px, 24vw, 120px); letter-spacing: -0.03em; bottom: 22px; }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(72px, 24vw, 120px); letter-spacing: -0.03em; bottom: 22px; }
 }
 @media (max-width: 375px) {
-  .zl-banner__title { font-size: clamp(62px, 22vw, 100px); }
-  .zl-banner__labels span { font-size: 8px; letter-spacing: 0.06em; }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(62px, 22vw, 100px); }
+  .zl-contact-banner .zl-banner__labels span { font-size: 8px; letter-spacing: 0.06em; }
 }
 @media (max-width: 320px) {
-  .zl-banner__title { font-size: clamp(54px, 21vw, 84px); bottom: 18px; }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(54px, 21vw, 84px); bottom: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .zl-banner__bg,
-  .zl-banner__labels span,
-  .zl-banner__title-letter,
-  .zl-banner__title-sub {
+  .zl-contact-banner .zl-banner__bg,
+  .zl-contact-banner .zl-banner__labels span,
+  .zl-contact-banner .zl-banner__title-letter,
+  .zl-contact-banner .zl-banner__title-sub {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Contact banner is sized like the About and Services banners: same inset
+   rounded card, same 16/6 frame. */
+.zl-banner.zl-contact-banner {
+  width: calc(100% - clamp(1.5rem, 1.4vw, 1.75rem));
+  height: auto;
+  aspect-ratio: 16 / 6;
+  min-height: 330px;
+  margin: var(--sp-3) auto 0;
+  border-radius: var(--radius-block);
+}
+/* Shorter frame than before, so the labels ride higher and the title scales
+   down a touch to keep them from colliding. */
+.zl-contact-banner .zl-banner__labels { top: 24%; }
+.zl-contact-banner .zl-banner__title { font-size: clamp(120px, 15vw, 280px); }
+@media (max-width: 749px) {
+  .zl-banner.zl-contact-banner {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
+  }
+  .zl-contact-banner .zl-banner__title { font-size: clamp(72px, 19vw, 150px); bottom: 28px; }
+}
+/* "TALK to us." must fit inside the card on phones (it spilled past both
+   edges at 120px). */
+@media (max-width: 600px) {
+  .zl-contact-banner .zl-banner__title { font-size: 17.5vw; letter-spacing: -0.03em; bottom: 22px; }
+}
+
+/* "TALK to us." uses the same title size, weight and placement as the
+   About banner's "ABOUT us.": centred in the card, not a giant word along
+   the bottom edge. Overrides every size above at all widths. */
+.zl-contact-banner .zl-banner__title {
+  top: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+  padding-inline: var(--sp-6);
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 6vw, 7.5rem);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.zl-contact-banner .zl-banner__title-sub {
+  margin-left: 0.14em;
+  font-size: 0.72em;
+  letter-spacing: -0.03em;
+}
+@media (max-width: 749px) {
+  .zl-contact-banner .zl-banner__title {
+    font-size: clamp(3.5rem, 6vw, 7.5rem);
+    letter-spacing: -0.04em;
+    bottom: auto;
   }
 }
 

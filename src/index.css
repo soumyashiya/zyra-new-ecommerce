@@ -1,3 +1,10 @@
+/* ==========================================================================
+   Design system
+   Tokens mirror the reference commerce theme: Figtree type, an orange
+   accent on a white sheet, pill buttons, generously rounded cards, and a
+   small set of shared easing curves every transition pulls from.
+   ========================================================================== */
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -5,22 +12,156 @@
 }
 
 :root {
-  /* Height the header occupies; pages that pull content under the fixed
-     header reference this so the offset stays in sync at every breakpoint. */
-  --header-offset: 88px;
+  /* ---- Palette -------------------------------------------------------- */
+  --c-text: 54 54 54;             /* #363636 — body copy and headings      */
+  --c-bg: 255 255 255;
+  --c-bg-alt: 250 250 250;        /* #FAFAFA — alternating section ground  */
+  --c-accent: 232 85 13;          /* #E8550D — brand orange                */
+  --c-accent-soft: 237 135 85;    /* #ED8755 — gradient end                */
+  --c-highlight: 255 209 186;     /* #FFD1BA — hand-drawn underline, tags  */
+  --c-mint: 168 232 226;          /* #A8E8E2 — focus ring / review bubbles */
+  --c-rating: 246 170 6;          /* #F6AA06 — stars                       */
+  --c-on-accent: 255 255 255;
+  --c-success-text: 77 124 15;
+  --c-success-bg: 247 254 231;
+  --c-error-text: 190 18 60;
+  --c-error-bg: 255 241 242;
+  --c-focus: 11 97 205;
 
-  /* Site is dark-themed throughout. Without this, browsers draw native
-     form chrome (select popups, scrollbars) with light-mode defaults —
-     e.g. Chromium's <select> dropdown ignores custom `background` on
-     <option> and falls back to a white popup, making light option text
-     unreadable. */
-  color-scheme: dark;
+  --color-text: rgb(var(--c-text));
+  --color-bg: rgb(var(--c-bg));
+  --color-bg-alt: rgb(var(--c-bg-alt));
+  --color-accent: rgb(var(--c-accent));
+  --color-highlight: rgb(var(--c-highlight));
+  --color-rating: rgb(var(--c-rating));
+  --color-muted: rgb(var(--c-text) / 0.62);
+  --color-faint: rgb(var(--c-text) / 0.45);
+  --color-border: rgb(var(--c-text) / 0.1);
+  --color-border-light: rgb(var(--c-text) / 0.06);
+  --color-border-dark: rgb(var(--c-text) / 0.4);
+
+  --gradient-accent: linear-gradient(46deg, rgb(var(--c-accent)) 13%, rgb(var(--c-accent-soft)) 86%);
+  --gradient-footer: linear-gradient(140deg, rgb(var(--c-accent)) 10%, rgb(var(--c-accent-soft)) 95%);
+
+  /* ---- Type ----------------------------------------------------------- */
+  --font-body: 'Figtree Variable', 'Figtree', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+  --font-heading: var(--font-body);
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --heading-line-height: 1;
+  --heading-letter-spacing: -0.02em;
+  --body-line-height: 1.2;
+
+  --text-3xs: 0.625rem;
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-2sm: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+
+  /* Fluid ramps — every display size interpolates instead of stepping. */
+  --fluid-xs-to-sm: clamp(var(--text-xs), 0.7297rem + 0.1013vw, var(--text-sm));
+  --fluid-sm-to-base: clamp(var(--text-sm), 0.8115rem + 0.1587vw, var(--text-base));
+  --fluid-sm-to-lg: clamp(var(--text-sm), 0.748rem + 0.3174vw, var(--text-lg));
+  --fluid-base-to-xl: clamp(var(--text-base), 0.873rem + 0.3175vw, var(--text-xl));
+  --fluid-base-to-2xl: clamp(var(--text-base), 0.746rem + 0.6349vw, var(--text-2xl));
+  --fluid-lg-to-2xl: clamp(var(--text-lg), 0.9722rem + 0.4444vw, var(--text-2xl));
+  --fluid-xl-to-3xl: clamp(var(--text-xl), 0.4966rem + 1.1818vw, var(--text-3xl));
+  --fluid-2xl-to-4xl: clamp(var(--text-2xl), 0.6307rem + 1.3636vw, var(--text-4xl));
+
+  --title-sm: clamp(var(--text-2xl), 2.526vw, var(--text-5xl));
+  --title-md: clamp(2rem, 3.368vw, 4rem);
+  --title-lg: clamp(2.5rem, 3.368vw, 4.75rem);
+  --title-xl: clamp(3rem, 7.813vw, 5rem);
+
+  /* ---- Spacing -------------------------------------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-7: 1.75rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-14: 3.5rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+  --sp-28: 7rem;
+  --sp-32: 8rem;
+
+  /* Vertical rhythm between major page sections. */
+  --section-gap: clamp(var(--sp-14), 7vw, var(--sp-28));
+  --section-gap-sm: clamp(var(--sp-10), 4.5vw, var(--sp-16));
+
+  /* ---- Layout --------------------------------------------------------- */
+  --page-width: 1420px;
+  --page-padding: var(--sp-5);
+  --page-container: min(calc(100% - var(--page-padding) * 2), var(--page-width));
+
+  /* ---- Radii ---------------------------------------------------------- */
+  --radius-pill: 3.75rem;
+  --radius-input: 0.375rem;
+  --radius-card: clamp(0.625rem, 1.053vw, 1.25rem);
+  --radius-block: clamp(1rem, 1.578vw, 1.875rem);
+  --radius-sheet: clamp(1rem, 1.58vw, 1.5rem);
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease-nav: 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+  --ease-primary: 0.5s cubic-bezier(0.3, 1, 0.3, 1);
+  --ease-smooth: 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+  --ease-fast: 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+  --ease-short: 0.2s cubic-bezier(0.7, 0, 0.3, 1);
+  --curve-primary: cubic-bezier(0.3, 1, 0.3, 1);
+  --curve-smooth: cubic-bezier(0.7, 0, 0.3, 1);
+
+  /* ---- Chrome --------------------------------------------------------- */
+  --topbar-height: 48px;
+  --header-height: 108px;
+  --header-offset: calc(var(--topbar-height) + var(--header-height));
+
+  color-scheme: light;
 }
+
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 84px;
+  }
+}
+
+@media (max-width: 749px) {
+  :root {
+    --topbar-height: 44px;
+    --header-height: 68px;
+    --page-padding: var(--sp-4);
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
 
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-offset) + var(--sp-4));
 }
 
 html, body {
@@ -28,7 +169,6 @@ html, body {
   overflow-x: clip;
 }
 
-/* Layout wrappers must never introduce their own horizontal scroll. */
 #root, .app, .main {
   width: 100%;
   max-width: 100%;
@@ -36,13 +176,28 @@ html, body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
-  background: #0a0a0a;
-  color: white;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--body-line-height);
+  /* The orange topbar sits on this ground; the white sheet rounds over it. */
+  background: var(--color-accent);
+  color: var(--color-text);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -58,6 +213,11 @@ button {
   color: inherit;
 }
 
+input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+}
+
 img, svg, video, canvas {
   max-width: 100%;
 }
@@ -66,27 +226,564 @@ img {
   display: block;
 }
 
-/* Media-wide responsive media: never distort, never overflow. */
 img, video {
   height: auto;
 }
 
-/* Respect users who prefer reduced motion — soften heavy scroll/reveal
-   animations site-wide for accessibility and low-powered devices. */
+ul, ol {
+  list-style: none;
+}
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid rgb(var(--c-focus));
+  outline-offset: 2px;
+  border-radius: var(--radius-input);
+}
+
+::selection {
+  background: var(--color-highlight);
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Layout primitives
+   ========================================================================== */
+
+/* The white content sheet. It rounds over the orange topbar at the top and
+   over the orange footer at the bottom, which is what gives the theme its
+   signature "card on colour" silhouette. */
+.zk-sheet {
+  background: var(--color-bg);
+  border-start-start-radius: var(--radius-sheet);
+  border-start-end-radius: var(--radius-sheet);
+  position: relative;
+  z-index: 1;
+}
+
+.zk-container {
+  width: var(--page-container);
+  margin-inline: auto;
+}
+
+.zk-section {
+  padding-block: var(--section-gap);
+}
+
+.zk-section--sm {
+  padding-block: var(--section-gap-sm);
+}
+
+.zk-section--alt {
+  background: var(--color-bg-alt);
+}
+
+/* An alternating band that rounds into the section below/above it. */
+.zk-section--rounded-end {
+  border-end-start-radius: var(--radius-sheet);
+  border-end-end-radius: var(--radius-sheet);
+}
+
+.zk-section--rounded-start {
+  border-start-start-radius: var(--radius-sheet);
+  border-start-end-radius: var(--radius-sheet);
+}
+
+/* ==========================================================================
+   Type primitives
+   ========================================================================== */
+
+.zk-eyebrow {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: 1;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.zk-title {
+  font-size: var(--title-md);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.zk-title--lg { font-size: var(--title-lg); }
+.zk-title--sm { font-size: var(--title-sm); }
+
+.zk-lede {
+  font-size: var(--fluid-base-to-xl);
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+/* Hand-drawn peach underline under emphasised words in headings —
+   the theme's one recurring decorative flourish. */
+.zk-title em,
+.zk-mark {
+  font-style: inherit;
+  position: relative;
+  display: inline-block;
+}
+
+.zk-title em::after,
+.zk-mark::after {
+  content: '';
+  position: absolute;
+  inset-inline: -0.08em;
+  bottom: -0.16em;
+  height: 0.22em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M4 11.5C42 4.2 92 2.8 152 6.2c17 1 32 3.1 44 5.6' stroke='%23FFD1BA' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Buttons
+   A pill with a circular fill that sweeps up from the bottom on hover —
+   `.zk-btn__fill` is the sweeping disc, the label rides above it.
+   ========================================================================== */
+
+.zk-btn {
+  --btn-bg: var(--color-accent);
+  --btn-fg: rgb(var(--c-on-accent));
+  --btn-border: var(--color-accent);
+  --btn-fill: rgb(var(--c-text));
+  --btn-fg-hover: rgb(var(--c-on-accent));
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 48px;
+  padding: 0 var(--sp-7);
+  border: 2px solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-heading);
+  font-size: clamp(0.9375rem, 0.8115rem + 0.1587vw, 1.0625rem);
+  font-weight: var(--font-bold);
+  line-height: 1;
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--ease-primary), border-color var(--ease-primary);
+}
+
+/* The fill is a wide ellipse parked below the button; on hover it slides up
+   to cover, so its curved leading edge wipes across the label. */
+.zk-btn__fill {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 150%;
+  height: 200%;
+  border-radius: 50%;
+  background: var(--btn-fill);
+  transform: translate(-50%, 100%);
+  z-index: -1;
+  transition: transform var(--ease-primary);
+}
+
+.zk-btn:hover .zk-btn__fill,
+.zk-btn:focus-visible .zk-btn__fill {
+  transform: translate(-50%, -25%);
+}
+
+.zk-btn:hover,
+.zk-btn:focus-visible {
+  color: var(--btn-fg-hover);
+  border-color: var(--btn-fill);
+}
+
+.zk-btn__icon {
+  flex: none;
+  transition: transform var(--ease-primary);
+}
+
+.zk-btn:hover .zk-btn__icon {
+  transform: translateX(4px);
+}
+
+/* Outline on imagery — white border and text, fills white on hover. */
+.zk-btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: #fff;
+  --btn-border: #fff;
+  --btn-fill: #fff;
+  --btn-fg-hover: rgb(var(--c-text));
+}
+
+/* Quiet secondary on the white sheet. */
+.zk-btn--outline {
+  --btn-bg: transparent;
+  --btn-fg: rgb(var(--c-text));
+  --btn-border: var(--color-border-dark);
+  --btn-fill: rgb(var(--c-text));
+  --btn-fg-hover: #fff;
+}
+
+.zk-btn--light {
+  --btn-bg: #fff;
+  --btn-fg: rgb(var(--c-text));
+  --btn-border: #fff;
+  --btn-fill: rgb(var(--c-text));
+  --btn-fg-hover: #fff;
+}
+
+.zk-btn--dark {
+  --btn-bg: rgb(var(--c-text));
+  --btn-fg: #fff;
+  --btn-border: rgb(var(--c-text));
+  --btn-fill: var(--color-accent);
+  --btn-fg-hover: #fff;
+}
+
+.zk-btn--lg {
+  min-height: 56px;
+  padding-inline: var(--sp-8);
+}
+
+.zk-btn--block {
+  display: flex;
+  width: 100%;
+}
+
+.zk-btn[disabled],
+.zk-btn[aria-disabled='true'] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Circular icon button — carousel arrows, newsletter submit, drawer close. */
+.zk-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  transition: border-color var(--ease-fast), background-color var(--ease-fast),
+    color var(--ease-fast), transform var(--ease-fast);
+}
+
+.zk-icon-btn:hover:not([disabled]) {
+  border-color: currentColor;
+  transform: scale(1.06);
+}
+
+.zk-icon-btn[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ==========================================================================
+   Surfaces
+   ========================================================================== */
+
+.zk-card {
+  background: var(--color-bg);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.zk-card--bordered { border: 1px solid var(--color-border-light); }
+.zk-card--alt { background: var(--color-bg-alt); }
+
+/* Media card: rounded, cropped, with room for an overlay. */
+.zk-media {
+  position: relative;
+  border-radius: var(--radius-block);
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.zk-media > img,
+.zk-media > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Legibility scrim behind overlay copy on photography. */
+.zk-media__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.zk-media__scrim--bottom {
+  background: linear-gradient(to top, rgb(0 0 0 / 0.62) 0%, rgb(0 0 0 / 0.18) 38%, transparent 68%);
+}
+
+.zk-media__scrim--left {
+  background: linear-gradient(to right, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0.2) 45%, transparent 75%);
+}
+
+/* Peach capsule used for product attributes and badges. */
+.zk-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--radius-pill);
+  background: rgb(var(--c-highlight) / 0.45);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: 1.2;
+}
+
+.zk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius-input);
+  background: rgb(var(--c-text) / 0.07);
+  color: var(--color-muted);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.zk-badge--accent {
+  background: rgb(var(--c-accent) / 0.12);
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Stars
+   ========================================================================== */
+
+.zk-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: var(--color-rating);
+  line-height: 1;
+}
+
+.zk-stars svg { display: block; }
+
+.zk-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+.zk-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.zk-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-muted);
+}
+
+.zk-input,
+.zk-textarea,
+.zk-select {
+  width: 100%;
+  min-height: 52px;
+  padding: var(--sp-3) var(--sp-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  background: var(--color-bg);
+  font-size: var(--text-base);
+  line-height: 1.4;
+  transition: border-color var(--ease-fast), box-shadow var(--ease-fast);
+}
+
+.zk-textarea {
+  min-height: 140px;
+  padding-block: var(--sp-4);
+  resize: vertical;
+}
+
+.zk-input::placeholder,
+.zk-textarea::placeholder {
+  color: var(--color-faint);
+}
+
+.zk-input:focus,
+.zk-textarea:focus,
+.zk-select:focus {
+  outline: none;
+  border-color: var(--color-border-dark);
+  box-shadow: 0 0 0 4px rgb(var(--c-mint) / 0.4);
+}
+
+/* Pill input with an inset circular submit — the newsletter pattern. */
+.zk-inline-form {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-1) var(--sp-1) var(--sp-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+}
+
+.zk-inline-form input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  font-size: var(--text-base);
+  padding-block: var(--sp-3);
+}
+
+.zk-inline-form input:focus { outline: none; }
+
+.zk-form-note {
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+.zk-form-note--ok { color: rgb(var(--c-success-text)); }
+.zk-form-note--err { color: rgb(var(--c-error-text)); }
+
+/* ==========================================================================
+   Carousel rail — horizontal scroll-snap track with hidden scrollbar.
+   ========================================================================== */
+
+.zk-rail {
+  display: flex;
+  gap: var(--sp-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: var(--sp-2);
+}
+
+.zk-rail::-webkit-scrollbar { display: none; }
+
+.zk-rail > * {
+  scroll-snap-align: start;
+  flex: none;
+}
+
+.zk-rail-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+/* ==========================================================================
+   Scroll reveal — opt in with [data-rv]; the observer adds .is-rv.
+   ========================================================================== */
+
+[data-rv] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--ease-smooth), transform var(--ease-smooth);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-rv].is-rv {
+  opacity: 1;
+  transform: none;
+}
+
+[data-rv='fade'] { transform: none; }
+[data-rv='scale'] { transform: scale(0.96); }
+[data-rv='scale'].is-rv { transform: none; }
+
+/* Marquee track; the content is duplicated in markup so the loop is seamless. */
+.zk-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.zk-marquee__track {
+  display: flex;
+  align-items: center;
+  flex: none;
+  min-width: 100%;
+  gap: var(--marquee-gap, var(--sp-10));
+  padding-inline-end: var(--marquee-gap, var(--sp-10));
+  animation: zk-marquee var(--marquee-duration, 36s) linear infinite;
+}
+
+.zk-marquee:hover .zk-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes zk-marquee {
+  to { transform: translateX(-100%); }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.zk-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.zk-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section intro: eyebrow + title + lede, centred, with consistent rhythm. */
+.zk-section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  text-align: center;
+  max-width: 44rem;
+  margin-inline: auto;
+  margin-bottom: var(--sp-12);
+}
+
+.zk-section-head .zk-lede {
+  font-size: var(--fluid-sm-to-lg);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  [data-rv] { opacity: 1; transform: none; }
 }
 
-/* Prevent iOS Safari auto-zoom on focus by keeping form text ≥16px on
-   small screens; desktop keeps the designed sizes. */
+/* iOS Safari zooms the viewport when a focused field is under 16px. */
 @media (max-width: 480px) {
   input, select, textarea {
     font-size: 16px;

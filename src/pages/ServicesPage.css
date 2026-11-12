@@ -1,4 +1,4 @@
-/* =========================================================================
+﻿/* =========================================================================
    Zyra Labs — Services page
    Scoped under .zl-services. Reuses tokens & base styles from About.css via
    the shared .zl-page block (loaded when any zl-* page renders).
@@ -80,8 +80,8 @@
   gap: 4px;
 }
 .zl-process__media-tag strong {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 1.3rem;
   color: var(--cream);
   letter-spacing: 0;
@@ -104,8 +104,8 @@
 }
 .zl-process__step:last-child { border-bottom: 0; }
 .zl-process__num {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 2.4rem;
   color: var(--vyral-red);
   line-height: 1;
@@ -180,6 +180,12 @@
   object-position: center;
   transition: transform 800ms var(--ease-out);
 }
+/* Tinted cards carry a cut-out rather than a full-bleed photo, so the whole
+   pack has to stay in frame and the colour reads around it. */
+.zl-pcard__media--tint img {
+  object-fit: contain;
+  padding: 7%;
+}
 .zl-pcard:hover .zl-pcard__media img { transform: scale(1.04); }
 .zl-pcard__badge {
   position: absolute;
@@ -189,8 +195,8 @@
   background: rgba(11,11,11,0.7);
   color: var(--cream);
   border-radius: 999px;
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 0.85rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -230,8 +236,8 @@
   color: var(--vyral-red);
 }
 .zl-pcard__price {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-style: normal;
   font-size: 1.35rem;
   color: var(--ink);
   line-height: 1;
@@ -460,8 +466,6 @@
   }
   .zl-process__num { font-size: 1.6rem; }
 
-  /* Services banner: "OUR services." — larger for stronger presence on mobile */
-  .zl-services-banner .zl-banner__title { font-size: clamp(78px, 22vw, 140px); }
 
   .zl-faq__q { gap: 14px; font-size: clamp(1rem, 4.4vw, 1.2rem); }
 }
@@ -477,7 +481,6 @@
   .zl-process__num { font-size: 1.5rem; }
   .zl-process__step h3 { font-size: 1.12rem; }
   .zl-process__media-tag { right: 12px; top: 12px; padding: 10px 12px; }
-  .zl-services-banner .zl-banner__title { font-size: clamp(66px, 22vw, 108px); }
 }
 
 /* ---- 320px: smallest supported — guarantee zero horizontal overflow */
@@ -491,5 +494,4 @@
   }
   .zl-process__num { font-size: 1.35rem; }
   .zl-eyebrow { font-size: 0.7rem; }
-  .zl-services-banner .zl-banner__title { font-size: clamp(58px, 21vw, 92px); }
 }

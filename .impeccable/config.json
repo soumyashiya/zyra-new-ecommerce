@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "createdAt": "2026-11-11T13:13:19.575Z",
+        "reason": "Claude: Arial Black is used only for the heavy press-masthead wordmark (.hm-press__source--heavy) to mimic the HUNGER logo in the user's reference; not a UI font"
+      }
+    ]
+  }
+}

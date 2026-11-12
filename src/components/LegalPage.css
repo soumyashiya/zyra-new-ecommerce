@@ -5,26 +5,26 @@
    ========================================================================= */
 
 .zl-page.zl-legal {
-  --cream:        #F4F2EC;
-  --paper:        #FFFFFF;
-  --bone:         #E8E5DC;
-  --ash:          #6C6C6C;
-  --ink:          #0E0E0E;
-  --vyral-red:    #E5462B;
-  --vyral-red-hover: #C9381F;
+  --cream:        var(--color-bg-alt);
+  --paper:        var(--color-bg);
+  --bone:         rgb(var(--c-text) / 0.12);
+  --ash:          var(--color-muted);
+  --ink:          var(--color-text);
+  --vyral-red:    var(--color-accent);
+  --vyral-red-hover: #c9480b;
 
-  --line-on-cream: rgba(14, 14, 14, 0.10);
-  --line-strong:   rgba(14, 14, 14, 0.22);
+  --line-on-cream: var(--color-border);
+  --line-strong:   rgb(var(--c-text) / 0.22);
 
-  --font-sans:  "Geist Variable", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Instrument Serif", "Times New Roman", Times, serif;
+  --font-sans:  var(--font-body);
+  --font-serif: var(--font-heading);
 
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-base: 220ms;
+  --ease-out: var(--curve-primary);
+  --dur-base: 300ms;
 
   position: relative;
   min-height: 100vh;
-  background: var(--cream);
+  background: var(--color-bg);
   color: var(--ink);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -35,7 +35,7 @@
 
 /* ---------- Header ---------- */
 .zl-legal__head {
-  padding: 160px 20px 56px;
+  padding: clamp(56px, 7vw, 96px) 20px 56px;
   border-bottom: 1px solid var(--line-on-cream);
 }
 .zl-legal__head-inner {

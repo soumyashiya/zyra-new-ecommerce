@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import '@fontsource-variable/geist'
 import SiteFooter from './SiteFooter'
 import Seo from './Seo'
 import './LegalPage.css'

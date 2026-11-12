@@ -1,12 +1,10 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import Lenis from 'lenis'
-import '@fontsource-variable/geist'
 import SiteFooter from '../components/SiteFooter'
 import Seo from '../components/Seo'
 import './About.css'
 
-import heroImg from '../assets/images/004-best.webp'
+import heroImg from '../assets/new-images/hero.png'
 import missionImg from '../assets/images/about/mission.webp'
 import storyImg from '../assets/images/about/story.webp'
 import teamImg1 from '../assets/images/about/team.webp'
@@ -16,13 +14,6 @@ import teamImg4 from '../assets/images/about/team4.webp'
 import valueImg1 from '../assets/images/about/purity.webp'
 import valueImg2 from '../assets/images/about/consistency.webp'
 import valueImg3 from '../assets/images/about/documentation.webp'
-
-const Arrow = ({ size = 14 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 17 17 7" />
-    <path d="M8 7h9v9" />
-  </svg>
-)
 
 const AboutHero = () => {
   const title = 'ABOUT'
@@ -210,25 +201,6 @@ const Team = () => {
   )
 }
 
-const AboutCTA = () => (
-  <section className="zl-cta-band">
-    <div className="zl-cta-band__inner">
-      <span className="zl-cta-band__kicker" data-reveal>ready when you are</span>
-      <h2 data-reveal>Need a CoA, a custom<br />synthesis quote, or bulk pricing?</h2>
-      <div className="zl-cta-band__actions" data-reveal>
-        <Link to="/contact" className="zl-btn zl-btn--primary">
-          <span>Talk to the lab</span>
-          <Arrow />
-        </Link>
-        <Link to="/services" className="zl-btn zl-btn--ghost">
-          <span>Explore services</span>
-          <Arrow />
-        </Link>
-      </div>
-    </div>
-  </section>
-)
-
 function useReveal(rootRef) {
   useEffect(() => {
     const root = rootRef.current
@@ -300,7 +272,6 @@ function About() {
       <Story />
       <Values />
       <Team />
-      <AboutCTA />
       <SiteFooter />
     </div>
   )

@@ -1,0 +1,41 @@
+- generic [ref=f12e3]:
+  - link "Skip to main content" [ref=f12e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=f12e5]:
+    - generic [ref=f12e7]:
+      - button "Previous announcement" [ref=f12e8] [cursor=pointer]
+      - generic [ref=f12e11]:
+        - link "Independently verified ≥99% purity — CoA with every batch" [ref=f12e12] [cursor=pointer]:
+          - /url: /about
+        - link [aria-hidden]:
+          - /url: /shipping-policy
+          - text: Order before 3pm for same-day cold-chain dispatch
+        - link [aria-hidden]:
+          - /url: /shipping-policy
+          - text: Complimentary shipping on research orders over $250
+        - link [aria-hidden]:
+          - /url: /contact
+          - text: Questions about a compound? Talk to our lab team
+      - button "Next announcement" [ref=f12e13] [cursor=pointer]
+    - banner [ref=f12e16]:
+      - navigation "Primary" [ref=f12e18]:
+        - button "Bestsellers" [ref=f12e20] [cursor=pointer]
+        - button "All products" [ref=f12e22] [cursor=pointer]
+        - link "About" [ref=f12e25] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=f12e26] [cursor=pointer]:
+          - /url: /contact
+      - link "Zyra Labs — home" [ref=f12e27] [cursor=pointer]:
+        - /url: /
+        - generic [aria-hidden] [ref=f12e28]:
+          - text: zyra
+          - superscript [ref=f12e29]: ®
+      - generic [ref=f12e30]:
+        - link "Search products" [ref=f12e31] [cursor=pointer]:
+          - /url: /services
+        - link "Sign in" [ref=f12e35] [cursor=pointer]:
+          - /url: /signin
+        - link "Cart, 0 items" [ref=f12e39] [cursor=pointer]:
+          - /url: /cart
+  - main [ref=f12e43]:
+    - status "Loading" [ref=f12e44]
