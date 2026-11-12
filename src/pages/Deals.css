@@ -853,7 +853,12 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
   border-radius: var(--radius-block);
   overflow: hidden;
-  background: #f9f9f9;
+  /* Warm sand that picks up the photo's sunlit cream wall, with a soft
+     brand-orange glow in the far corner, so the copy half reads as one piece
+     with the picture instead of a flat grey panel. */
+  background:
+    radial-gradient(110% 85% at 100% 0%, rgb(232 85 13 / 0.14) 0%, transparent 60%),
+    linear-gradient(135deg, #f8eee1 0%, #f3e4d1 100%);
 }
 
 .hm-split__media {
@@ -1098,7 +1103,7 @@
 }
 
 .hm-stay__photo {
-  aspect-ratio: 1 / 1.08;
+  aspect-ratio: 4 / 5; /* matches the 896×1120 photos, no crop */
   border-radius: var(--radius-block);
   overflow: hidden;
   background: #eee;

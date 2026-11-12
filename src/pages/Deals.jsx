@@ -18,13 +18,13 @@ import weComparedImg from '../assets/new-images/we-compared.png'
 import aboutSectionImg from '../assets/new-images/about.png'
 import aboutImg2 from '../assets/images/new/home-about2.webp'
 import benchImg from "../assets/new-images/from the bench.png"
-import whyImg1 from '../assets/images/new/whyus-1.webp'
-import whyImg2 from '../assets/images/new/whyus2.webp'
-import whyImg4 from '../assets/images/new/whyus4.webp'
-import whyImg5 from '../assets/images/new/whyus5.webp'
+import stayImg1 from '../assets/new-images/six-reason1 (1).png'
+import stayImg2 from '../assets/new-images/six reason2.png'
+import stayImg3 from '../assets/new-images/six reason3.png'
+import stayImg4 from '../assets/new-images/six-reason4.png'
 
-/* 2 × 2 grid beside "Six reasons labs stay": vial, molecule, unboxing, carton. */
-const STAY_PHOTOS = [whyImg1, whyImg2, whyImg4, whyImg5]
+/* 2 × 2 grid beside "Six reasons labs stay" (1122×1402 photos, 4:5 frames). */
+const STAY_PHOTOS = [stayImg1, stayImg2, stayImg3, stayImg4]
 
 /* =========================================================================
    Home
